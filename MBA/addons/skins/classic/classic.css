@@ -1,0 +1,135 @@
+/*
+Menu related selectors
+*/
+
+
+.mba-toolbar-icon-1 {
+	background: url(icon1.png) no-repeat;
+	height: 16px;
+	left: 2px;
+	position: absolute; /* Do not alter this line! */
+	width: 16px;
+}
+
+.mba-toolbar-icon-2 {
+	background: url(icon2.png) no-repeat;
+	height: 16px;
+	left: 2px;
+	position: absolute; /* Do not alter this line! */
+	width: 16px;
+}
+
+.mba-toolbar-icon-3 {
+	background: url(icon3.png) no-repeat;
+	height: 16px;
+	left: 2px;
+	position: absolute; /* Do not alter this line! */
+	width: 16px;
+}
+
+
+/*
+Menu bar related selectors
+*/
+.mba-toolbar-menubar {
+	background: #CCCCCC url(classic_divider.png) no-repeat left;
+	border: 2px outset;
+	border-bottom-color: #000000;
+	border-left-color: #FFFFFF;
+	border-right-color: #000000;
+	border-top-color: #FFFFFF;
+	cursor: default;
+	padding: 3px 1px;
+	position: absolute; /* Do not alter this line! */
+	visibility: visible;
+}
+
+.mba-toolbar-menubar-drag {
+	cursor: move;
+	font: 11px Tahoma, Helvetica, sans, Arial, sans-serif;
+	padding: 2px 5px;
+	position: relative; /* Do not alter this line! */
+	visibility: hidden;
+	width: 9px;
+}
+
+.mba-toolbar-menubar-item {
+	background: #CCCCCC;
+	border: none;
+	color: #000000;
+	font: 11px Tahoma, Helvetica, sans, Arial, sans-serif;
+	padding: 2px 10px 2px 22px;
+	position: relative; /* Do not alter this line! */
+}
+
+.mba-toolbar-menubar-item-click {
+	background: #00008B;
+	border: 1px solid #00008B;
+	color: #FFFFFF;
+	font: 11px Tahoma, Helvetica, sans, Arial, sans-serif;
+	padding: 2px 9px 2px 21px;
+	position: relative; /* Do not alter this line! */
+}
+
+.mba-toolbar-menubar-item-over {
+	background: #CCCCCC;
+	border: 1px outset;
+	color: #000000;
+	font: 11px Tahoma, Helvetica, sans, Arial, sans-serif;
+	padding: 2px 9px 2px 21px;
+	position: relative; /* Do not alter this line! */
+}
+
+.mba-toolbar-menu {
+	background: #CCCCCC;
+	border: 2px outset;
+	border-bottom-color: #000000;
+	border-left-color: #FFFFFF;
+	border-right-color: #000000;
+	border-top-color: #FFFFFF;
+	cursor: default;
+	position: absolute; /* Do not alter this line! */
+	visibility: hidden;
+	z-index: 10;
+}
+
+.mba-toolbar-menu-item {
+	background: transparent;
+	border: none;
+	color: #000000;
+	font: 11px Tahoma, Helvetica, sans, Arial, sans-serif;
+	padding: 2px 15px 2px 22px;
+	position: relative; /* Do not alter this line! */
+}
+
+.mba-toolbar-menu-over {
+	background: #00008B;
+	border: none;
+	font: 11px Tahoma, Helvetica, sans, Arial, sans-serif;
+	padding: 2px 15px 2px 22px;
+	position: relative; /* Do not alter this line! */
+}
+
+.mba-toolbar-menu-arrow {
+	background: url(classic_arrow.png) no-repeat;
+	height: 7px;
+	position: absolute; /* Do not alter this line! */
+	right: 8px;
+	width: 4px;
+}
+
+.mba-toolbar-menu-arrow-over {
+	background: url(classic_arrow_o.png) no-repeat;
+	height: 7px;
+	position: absolute; /* Do not alter this line! */
+	right: 8px;
+	width: 4px;
+}
+
+.jsdomenusep {
+}
+
+.jsdomenusep hr {
+	text-align: center;
+	width: 95%;
+}

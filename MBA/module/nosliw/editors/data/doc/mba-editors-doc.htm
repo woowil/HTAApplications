@@ -1,1 +1,1091 @@
-This is a planned Release
+ <HTML>
+<HEAD>
+<TITLE>MBase - VBScript/MSI Database - Functions</TITLE>
+
+<STYLE>
+BODY {margin-left: 20px; margin-right: 20px;}
+A:link, A:visited {text-decoration: none; color: #5A0EFA; line-height: 1.3;}
+.TB {font-size: 13px; color: #000000; font-family: verdana, arial, helvetica, sans-serif; line-height: 1.25;}
+.TR {font-size: 13px; color: #DD0080; font-family: verdana, arial, helvetica, sans-serif; line-height: 1.25;}
+.TP {font-size: 13px; color: #800080; font-family: verdana, arial, helvetica, sans-serif; line-height: 1.25;}
+
+.TEx {font-size: 13px; color: #660000; font-family: verdana, arial, helvetica, sans-serif; line-height: 1.25; background-color: #FBF4EE;}
+
+H4 {font-size: 16px; color: #FFFFFF; font-family: arial, sans-serif; background-color: #9999CC; line-height: 1.5; text-indent: 20px;}
+H5 {font-size: 14px; color: #68699D; font-family: arial, sans-serif; background-color: #E2E2F1; line-height: 1.5; text-indent: 40px;}
+
+</STYLE>
+
+
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<DIV align="center">
+<FONT FACE="arial" SIZE=2>
+<H2>MBase Function Reference - Update 5-17-07</H2>
+<H3> - A Complete Set of Functions for Using MSI Files as SQL Databases in VBScript - </H3>
+<A NAME="top"></A>
+</FONT>
+<HR>
+<TABLE WIDTH=100% BORDER=0 CELLPADDING=5>
+<TR>
+<TD valign="top">
+<FONT FACE="arial" COLOR="#000000" SIZE=2>
+<B>General</B><BR><BR>
+<A HREF="#intro">Introduction</A> <BR><BR>
+
+<A HREF="#load">LoadDB</A> <BR>
+<A HREF="#reload">ReLoadDB</A> <BR>
+<A HREF="#unload">UnLoadDB</A> <BR>
+<A HREF="#makedb">MakeNewDB</A> <BR>
+
+<A HREF="#clearsum">ClearSummary</A> <BR>
+<A HREF="#setsum">SetSummaryValues</A> <BR>
+<A HREF="#cleart">ClearAllTables</A> <BR>
+</FONT></TD>
+<TD valign="top">
+<FONT FACE="arial" COLOR="#000000" SIZE=2><B>
+DB Structure</B><BR><BR>
+
+<A HREF="#addt">AddTable</A> <BR>
+<A HREF="#addtc">AddTableCustom</A> <BR>
+<A HREF="#import">ImportTable</A> <BR>
+<A HREF="#remt">RemoveTable</A> <BR>
+<A HREF="#addc">AddColumn</A> <BR>
+
+</FONT></TD>
+<TD valign="top">
+<FONT FACE="arial" COLOR="#000000" SIZE=2><B>
+Setting/Reading Data</B><BR><BR>
+
+<A HREF="#addr">AddRecord</A> <BR>
+<A HREF="#remr">RemoveRecord</A> <BR>
+<A HREF="#getsel">GetSelectValues</A> <BR>
+<A HREF="#getall">GetAllValues</A> <BR>
+<A HREF="#setsel">SetSelectValues</A> <BR>
+<A HREF="#setall">SetAllValues</A> <BR><BR>
+
+<A HREF="#cablist">GetCABList</A> <BR>
+<A HREF="#cabext">ExtractCAB</A> <BR>
+<A HREF="#cabins">InsertCAB</A> <BR>
+
+</FONT></TD>
+<TD valign="top">
+<FONT FACE="arial" COLOR="#000000" SIZE=2><B>
+DB Information</B><BR><BR>
+
+<A HREF="#gettable">GetTableContent</A> <BR>
+<A HREF="#getchart">GetTableChart</A> <BR>
+<A HREF="#export">ExportAllTables</A> <BR>
+<A HREF="#tabnames">GetTableNames</A> <BR>
+<A HREF="#colnames">GetTableColumns</A> <BR>
+<A HREF="#coltypes">GetTableColumnTypes</A> <BR>
+<A HREF="#colspectypes">GetTableColumnSpecificTypes</A> <SPAN CLASS="TR">New 5-07</SPAN><BR>
+<A HREF="#coldattype">GetColumnDataType</A> <SPAN CLASS="TR">New 5-07</SPAN><BR>
+<A HREF="#col1">GetColumn1</A> <BR>
+<A HREF="#errs">ErrorString</A> <BR>
+<A HREF="#find">"Find" Functions</A> <BR>
+
+<BR>
+<A HREF="#eduse">Using the Editor</A> <BR></B>
+
+
+
+
+</FONT></TD></TR></TABLE>
+
+<!-- --------------------------- End Index --------------------------------- -->
+
+</DIV><DIV align="left">
+<HR>
+<FONT FACE="Verdana" COLOR="#000000" SIZE=2>
+<TABLE border=2 bordercolor="#800080" CELLPADDING=10><TR><TD>
+<SPAN CLASS="TP">
+<B>Note about error codes:</B><BR>
+&#160;&#160; Some functions return an error number. Some return True/False. Some return an
+array. But wherever functions can return useful error information it will be returned
+in the <B>ErrorString</B> property. Most functions have MBase error codes as well as
+MSI error codes. For example, an invalid parameter might return an error number of 1 or 2,
+while a function that fails in a call to WindowsInstaller will have an MSI error number. In both
+cases there should be a descriptive text string returned in the <B>ErrorString</B> property.
+The MSI error descriptions are often not very helpful, but they're better than nothing.
+ When troubleshooting scripts, check ErrorString on all failed operations.
+<BR><BR>
+</SPAN>
+</TD></TR></TABLE>
+<!-- ----------------------------------------------------------- INTRO -----------------------  -->
+
+<A NAME="intro"></A>
+<H4>Introduction</H4>
+
+<H5>About Windows Installer and MSI Files</H5>
+
+<B>If you don't know about the Windows Installer system...</B><BR><BR>
+&#160;&#160;
+ A few years ago Microsoft developed a new system for installing software. The system is
+known as Windows Installer. Orca, Visual Studio Installer and current versions of InstallShield, Wise
+Installer, Advanced Installer, etc. are all different GUI programs to facilitate the creation
+of Windows Installer packages.<BR><BR>
+
+<B>Problems with MSI from a software developer's point of view...</B><BR><BR>
+&#160;&#160; 
+Windows Installer is a very strange system. For the simple purpose of copying files and Registry
+settings during program installation, Microsoft has managed to create a stunningly complex
+and convoluted system. A Windows Installer installation file (.msi) is actually an SQL-like
+database of approximately 80 tables. (In addition, the MSI file usually contains the installation CAB file(s),
+but that is not necessary. The CABs can also be shipped separately.) An MSI installation can be created with nothing more
+than VBScript, but the MSI structure is so complex and so poorly designed that very few developers
+attempt to create their own installation files. Most people using MSI installers use some kind of program to build their
+installations.<BR><BR>
+&#160;&#160;
+  Actually, it seems likely that the Windows Installer system is difficult by design.
+By gradually moving to Windows Installer Microsoft is better able to control how
+software gets installed on Windows systems. For example, when Microsoft released
+SAPI 5, the speech API, the redistributables were made available only in the form of Windows Installer "merge modules".
+Developers who wanted to use SAPI 5 were forced to build an MSI installation,
+with no control - or even knowledge - of what went into it. The only other option was to
+dissect the merge modules in order to work out the details of how to ship SAPI 5
+support. By creating such a convoluted system with Windows Installer, Microsoft
+went a long way toward discouraging the latter option.<BR><BR>
+
+    &#160;&#160;
+     
+ Another example of MSI design that appears to be specifically 
+  intended to cause difficulty: There is no direct way to discover the columns of a given
+  table. There is a <B>_Columns</B> table that just lists all columns from all tables in the database. To find
+  the columns for a given table, the entire _Columns table must be iterated. ... And it gets worse:
+  The Type column of the _Columns table, which is necessary to discover the data type of specific column
+  content, is undocumented. It is a <B>"secret"</B> column usable only by Microsoft insiders. Anyone who
+  doesn't know about it is forced to use a very work intensive and awkward method. (Creating a View object
+  for each table and iterating through the View.ColumnInfo properties.)
+<BR><BR>
+&#160;&#160; Perhaps the most notable example of MSI limitations is the manner
+in which GUI dialogue windows are created. One might literally spend days setting up a simple,
+custom window. Each label, button, text field, etc. must be specified and cross-referenced
+across several tables, "created" by entering tedious x, y, width and height specifications
+in various table columns entries. As Microsoft says in their MSI help file: "it is recommended that 
+package authors use the internal user interface provided."
+
+<BR><BR>
+<B>...and advantages...</B><BR><BR>
+&#160;&#160;
+There is one notable advantage to MSI installations: The MSI standardization provides 2 ways (via 
+WindowsInstaller and via WMI) to document installed software in an orderly way. That
+may be attractive to system administrators. Although that advantage is somewhat limited: 
+Both WindowsInstaller and WMI are incapable of returning information about any installed
+software <B>except</B> that which was installed via MSI.
+<BR><BR>
+
+&#160;&#160; While a case can be made that Windows Installer is all but useless for its intended
+purpose of installing software, it is being used more and more by large software companies
+cooperating with Microsoft. From the customer point of view MSI installers at least have the advantage
+of being thoroughly transparent, given the proper tools. <B>An MSI installer can be completely
+unpacked and documented.</B> It can even be edited to change default installation settings.<BR><BR>
+&#160;&#160; 
+
+
+<B> Other uses for MSI:</B><BR><BR>
+
+  &#160;&#160; MBase is short for "MSI database". The purpose of MBase has
+  nothing to do with installing software. MBase is approaching Windows Installer from a different
+  point of view:  <BR><BR>
+   <SPAN CLASS="TR"> 
+   &#149; An MSI file is essentialy an SQL database (with a few added, specialized functions).<BR><BR>
+   
+  &#149; Msiexec.exe, which handles MSI files, is essentially a database program with
+  specialized functionality. <BR><BR>
+  
+&#149; The WindowsInstaller.Installer object provides script with very thoroughgoing access
+to the whole range of database functionality.<BR><BR>
+
+<B>In other words, Windows Installer is a free, flexible SQL database program that is
+pre-installed on nearly all Windows PCs!</B>  </SPAN><BR><BR>
+
+&#160;&#160;
+The MBase VBScript class provides a set of functions that allow script to easily use an
+MSI database file without the need of knowing SQL. If you are familiar with SQL you can adapt
+the code in MBase for greater flexibility.<B> If you don't know SQL and don't want to, you can
+still use MBase to efficiently use and manage an MSI database. The biggest advantage
+of writing custom script for use with MSI files is in filling a database initially.</B> For example,
+the Zip Code Finder utility is made up of an HTA GUI and an MSI file with a single table that contains
+approximately 43,000 rows. In order to enter all of the zip codes into the database it was
+worthwhile to write a custom script for the job. (That script is included in the Zip Finder download
+from the JSWare website.)
+
+<BR><BR>
+<H5> The MSI Database: Using the WindowsInstaller.Installer Object</H5>
+
+<B>A basic description of what MBase is all about...</B><BR><BR>
+&#160;&#160;
+
+MBase is a database program written as a VBScript class and HTA webpage. The MBase class
+provides convenient translation functions that interface with the SQL-like structure of
+MSI databases. The functions are designed to translate the awkward syntax of SQL command strings into
+standard, Windows-style functions. No knowledge of SQL is needed to use MBase.<BR><BR>
+&#160;&#160;
+So MBase has two intended purposes: 1) The whole thing - the MBase Database Utility - can be used as a graphical
+database editor program that can read from and write to MSI database files (including software installers). 2) The
+MBase class itself can be used straight, or as a storehouse of VBS/MSI sample code, in order
+to carry out scripted database automation for purposes where a GUI is not desirable.
+<BR><BR>
+<H5> MBase Functions</H5>
+
+<B>A basic rundown of what MBase can do...</B><BR><BR>
+
+&#160;&#160; MBase provides the basic SQL database functions without needing
+to know SQL or use awkward SQL command strings. Since an MSI uses a variant of
+SQL, the system is similar to the ADO object model. Using the WindowsInstaller.Installer object,
+an MSI database (any MSI file) can be loaded, unloaded, stripped of tables, and rebuilt.
+MBase has functions to create new MSI files, new tables ("recordsets") and columns ("properties"). There
+are functions to read, write, add, remove records (table rows) and record values ("fields").<BR><BR>
+
+&#160;&#160; MBase is a very functional, but fairly simple, database front end.
+Windows Installer only provides a subset of SQL functions, and MBase is intended
+to be easy to use, so there are some limitations as written. (Since this is a script
+utility you can edit it as desired.) <B>Limitations:</B><BR><BR>
+<B> 1)</B> The first column in a table
+is a "primary key". The values for that column in each record must be unique. There are no other primary keys in tables.
+<BR><BR>
+
+<B>2)</B> Column values can be read or written in two ways: You can read or write all values in a column,
+or you can read or write all values <I> where the value in another column matches a given value</I>.
+Example: You can change all values in column "Size" to, say, 10. You can also change all values in
+column Size to 10 <I>if and only if</I> the value in column "Color" is "red". (This is the WHERE command
+of SQL.) The read/write functions do not get more complex than that.
+<BR><BR>
+
+<B>3)</B> MBase has <B>2 datatypes: integers and strings.</B> A string may be up to 255 characters.
+Since SQL basically deals in strings, and since most datatypes are basically either text or a number,
+this approach seemed flexible while also being simple. A currency data type might have been a
+handy addition, but Windows Installer doesn't have such a type. (See the <B>AddTableCustom</B>
+function for an option to have more control over table structure.)<BR><BR>
+
+&#160;&#160;
+You can always edit the script to use more datatypes. MBase is intended to provide the
+basics needed without getting into long, involved, SQL command strings. But for some specific
+purposes it may be better to write a new script or edit MBase. Functions could also be written
+to do things like use the dynamic _Streams table to store binary data. (The dynamic tables in the Windows Installer
+system - in particular the _Streams, _Columns and _Tables tables - are inherent to the system.
+They are not destroyed when an MSI file's tables are deleted.)<BR><BR>
+
+&#160;&#160; Since MBase has only 2 data types, and a normal MSI file may have up to
+25, it's best to use a blank MSI file, or one that has been stripped of tables and rebuilt, for your database.
+MBase is using the "secret" column Type property of the MSI _Columns table to distinguish data types. 
+All string-based types will be considered
+to be a string of type CHAR(255). All other types will be treated as type LONG (4-byte integer). When you create
+table columns (unless you're using the AddTableCustom function) the parameter IfNumeric will specify whether the 
+column values will be string or integer.
+Writing a non-numeric string to an integer value will result in an error.<BR><BR>
+
+<B>As for editing MSI program installer files:</B> That should generally be feasible.
+ The varied datatypes in MSI tables
+should not be a problem when entering data. MBase is only limited in how it can define
+new table and column data types. But MBase is not designed specifically for editing
+software installation MSIs, and it's easy to make permanent mistakes with SQL. ...So
+be sure to make backups before starting.
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+<!-- ------------------------------------------------------------ LOAD ----------------------  -->
+<HR>
+<A NAME="load"></A>
+<H4>Function LoadDB(MSIFilePath)</H4>
+&#149; Load a database from MSI file.<BR>
+ex.: <SPAN CLASS="TEx"> Ret = MB.LoadDB("C:\windows\desktop\base2.msi")</SPAN><BR><BR>
+
+<B>MSIFilePath</B> - Full path of MSI file to load.<BR>
+<B>Return: </B> - 0-success. 1-bad path. other: MSI error code. If return is non-zero, <B>ErrorString</B> property returns error description.
+
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+<!-- -------------------------------------------------------------- reload --------------------  -->
+<A NAME="reload"></A>
+<H4>Sub ReLoadDB</H4>
+&#149; Reload current database.<BR>
+ex.: <SPAN CLASS="TEx">MB.ReLoadDB</SPAN><BR><BR>
+
+<B>Notes:</B> When a database is loaded, MBase keeps track of changes, and changes
+made through MBase are committed to the database as they're made. <B>ReLoadDB</B>
+is provided as an extra measure. It refreshes the data by unloading and reloading the database.
+ReloadDB should not normally be needed, but it might be handy occasionally.
+
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+<!-- ---------------------------------------------------------------- unload ------------------  -->
+<A NAME="unload"></A>
+<H4>Sub UnLoadDB</H4>
+&#149; Unloads the MSI database.<BR>
+ex.: <SPAN CLASS="TEx">MB.UnLoadDB</SPAN><BR><BR>
+
+<B>Notes:</B> The class will unload any loaded file when it is terminated, but UnLoadDB
+is a neater way to make sure that the object is released.
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ---------------------------------------------------------------- MakeNewDB ------------------  -->
+<A NAME="makedb"></A>
+<H4>Function MakeNewDB(Path)</H4>
+&#149; Creates a new MSI database file.<BR>
+ex.: <SPAN CLASS="TEx">Ret = MB.MakeNewDB("C:\new.msi")</SPAN><BR><BR>
+
+<B>Notes:</B> Creates a new, blank MSI file. Caller must be sure that
+path is valid and that file does not exist. If file exists it will be overwritten
+without warning.<BR><BR>
+
+<B>Return:</B> Returns 0 on success. On error, <B>ErrorString</B> property will contain error description.
+
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="clearsum"></A>
+<H4>Sub ClearSummary</H4>
+&#149; Clears all Summary strings from the MSI.<BR>
+ex.: <SPAN CLASS="TEx">MB.ClearSummary</SPAN><BR><BR>
+
+&#160;&#160; Erases the values that display in a file's Properties menu, Summary tab.
+ClearSummary is used to strip data from an existing MSI file.
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------- setsummary -----------------------  -->
+<A NAME="setsum"></A>
+<H4>Sub SetSummaryValues(sTitle, sSubject, sAuthor, sNotes)</H4>
+&#149; Sets 4 Summary strings in the MSI.<BR>
+ex.: <SPAN CLASS="TEx">MB.SetSummaryValues "Address Book", "Personal Addresses", "", "Contains email addresses"</SPAN><BR><BR>
+
+<B>Parameters</B> - Summary strings to set. There are 4 options: "Title" "Subject" "Author" "Notes"<BR><BR>
+
+<SPAN CLASS="TR"><B>NOTE:</B> As of this writing, the SetSummaryValues function
+is not working properly. Despite having some luck in erasing and re-writing new summary values,
+the result seems to be unpredictable. MBase will return the 4 values with GetSummaryValue, but
+seems to usually fail when writing new values.</SPAN>
+<BR><BR>
+<B>Notes:</B> Windows Installer uses a large number of "Summary" strings
+that will show in the Summary tab when the file is right-clicked and the Properties menu clicked.  
+MBase deals with 4 of the more common and potentially useful properties. <B>Note that
+setting properties with SetSummaryValues will also erase other values connected with a
+specific installation. This function assumes that you want to re-use an MSI file and
+erase its original content. </B><BR><BR>
+
+&#160;&#160; <B>SetSummaryValues</B> cannot create new values where none exist.
+It can only edit them. The scripting object model for MSI does not seem to provide
+any easy way to create new Summary entries.<BR><BR>
+
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ---------------------------------------------------------- clearalltables ------------------------  -->
+<A NAME="cleart"></A>
+<H4>Sub ClearAllTables</H4>
+&#149; Clears all data and tables (excpet summary strings) from an MSI file.<BR>
+ex.: <SPAN CLASS="TEx">MB.ClearAllTables</SPAN><BR><BR>
+
+<B>Notes:</B> ClearAllTables deletes all binary data stored, then deletes all permanent tables.
+It does not remove summary strings (see above). Also, in some cases ClearAllTables may not remove all
+data from the file. In general, it will probably make more sense to just create a new MSI
+rather than clean out a  program installer. MBase has a function <B>MakeNewDB</B> that will create
+a new, blank MSI file.
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ------------------------------------------------------------- add table ---------------------  -->
+<A NAME="addt"></A>
+<H4>Function AddTable(TableName, ColumnString)</H4>
+&#149; Adds a new table to MSI database.<BR>
+ex.: <SPAN CLASS="TEx">Ret = MB.AddTable("NewTable", "Col1 s, Col2 i, Col3 s")</SPAN><BR><BR>
+
+&#160;&#160; <B>AddTable</B> adds a new table to the database. One or more columns can
+be added when the table is created. A specific limitation of MBase is that the first column in
+a new table must be a primary key, while no other columns can be primary. In other words, column 1
+cannot be null. All records must have a value in column 1.<BR><BR>
+
+<B>TableName:</B> Name for new table.<BR>
+<B>ColumnString:</B> A string that specifies columns to create. At least one column must be created.
+Syntax is: column-name x <BR>
+"x" must be "i" to represent an integer value, or "s" for a string value. Each column name must be followed
+by a space, then an "i" or "s". Each column name/type string must be separated by a comma.
+<BR><BR>
+
+<B>Return:</B> Returns 0 on success. Otherwise, the return is an MSI error code and the
+ ErrorString property contains error description.<BR><BR>
+
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ------------------------------------------------------------- add table custom---------------------  -->
+<A NAME="addtc"></A>
+<H4>Function AddTableCustom(TableName, ColumnString)</H4>
+&#149; Adds a new table to MSI database.<BR>
+ex.: <SPAN CLASS="TEx">Ret = MB.AddTableCustom("NewTable", "Col1 CHAR(70) NOT NULL, Col2 INT4 NOT NULL, Col3 CHAR(10)")</SPAN><BR><BR>
+
+&#160;&#160; <B>AddTableCustom</B> adds a new table to the database. One or more columns can
+be added when the table is created. This function is similar to <B>AddTable</B> but the function caller
+is responsible for much of the SQL string. MBase simplifies SQL operations by providing functions that do not
+require any knowledge of SQL. That design also makes MBase less flexible. AddTableCustom takes the
+opposite approach: It's a harder function to use, but provides more options. Rather than just "s" or "i" for
+string or integer data types, the <B>ColumnString</B> parameter must include [column-name/space/data-type-string]
+for each column. In the sample above there are 3 columns, all with different data types, and first and second columns
+that cannot be null. (AddTableCustom will automatically add "NOT NULL" to the first column if it is not included. Only the first
+column may be the primary key - as with <B>AddTable</B> - but other columns may also be non-nullable.)
+<BR><BR>
+
+<B>TableName:</B> Name for new table.<BR>
+<B>ColumnString:</B> A string that specifies columns to create. At least one column must be created.
+Syntax is: column-name column-data <BR>
+Example: "FlowerName CHAR(60) NOT NULL, FlowerColor CHAR(15), FlowerHeight INT, FlowerNameLatin CHAR(255)"
+<BR><BR>
+
+<B>Return:</B> Returns 0 on success. Otherwise, the return is an MSI error code and the
+ <B>ErrorString </B>property contains error description.<BR><BR>
+
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ------------------------------------------------------------- import table---------------------  -->
+<A NAME="addtc"></A>
+<H4>Sub ImportTable(Path)</H4>
+&#149; Imports a table (in the form of a text file) to MSI database.<BR>
+ex.: <SPAN CLASS="TEx">Ret = MB.ImportTable "C:\ComboBox.txt" </SPAN><BR><BR>
+
+&#160;&#160; This is a very handy way to make major changes, but it is a finicky
+function. If the export function is used to export all tables it will yield a text file
+version of each table in the database. According to the MSI help, those files are not meant to be
+imported. Nevertheless, it works fine for the common tables that do not contain unusual
+data, such as binary streams. But MSI is finicky about the layout and is very poor about
+returning error information. <BR><BR>
+
+&#160;&#160; Any table imported will replace a table of the same name. If the table
+import fails, it is probably because of an error in the table. Common problems that can cause a failed import:<BR><BR>
+ &#160; - Repeat values in unique keys.<BR>
+&#160; - Missing tabs for empty columns.<BR>
+&#160; - Missing values in columns that are not nullable.<BR>
+ &#160; - String data in numeric columns (including such things as "002", which is not a number).<BR>
+ &#160; - The lack of a single carriage return after last row.<BR><BR>
+
+<A HREF="#top">Back to Top</A><BR><BR>
+
+
+<!-- ----------------------------------------------------------------------  remove table ------------  -->
+<A NAME="remt"></A>
+<H4>Sub RemoveTable(TableName)</H4>
+&#149; Removes a table from MSI database.<BR>
+ex.: <SPAN CLASS="TEx">MB.RemoveTable "Table1"</SPAN> <BR><BR>
+
+
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- -----------------------------------------------------------------------------    add column ----  -->
+<A NAME="addc"></A>
+<H4>Function AddColumn(TableName, ColName, IfNumeric)</H4>
+&#149; Adds a new column to an existing table.<BR>
+ex.:<SPAN CLASS="TEx"> Ret = MB.AddColumn("Table1", "Column2", True)</SPAN><BR><BR>
+
+&#160;&#160; <B>TableName</B> is name of table to alter. <B>ColName</B> is name of new column.
+<B>IfNumeric:</B> True creates a column with a long (4-byte) integer value. False creates a column
+with a string value that may be up to 255 characters.
+<BR><BR>
+<B>Return: </B> Returns 0 on success, 1 if TableName is invalid, or MSI error code if other error.
+On error, <B>ErrorString</B> property contains error description.
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="addr"></A>
+<H4>Function AddRecord(TableName, Values)</H4>
+&#149; Adds a new record (row) to an existing table.<BR>
+ex.: <SPAN CLASS="TEx">Ret = MB.AddRecord("Table1", "red, 10, -, blue")</SPAN><BR><BR>
+
+<B>Values:</B> Must be a comma-delimited string of values corresponding to table columns. All columns must
+be included. No quotes are necessary (or allowed) in string. String and integer values will be recognized by MBase
+without using extra quotes. For any column where the value that is not being set, use a dash: "-".<BR><BR>
+
+<B>Return:</B> 0-success. 1-invalid table name. 2-wrong number of values. 3-string sent for integer value. other-MSI error code.
+On error, <B>ErrorString</B> property contains error description.
+
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- --------------------------------------------------------------------- remove record -------------  -->
+<A NAME="remr"></A>
+<H4> Function RemoveRecord(TableName, ColName, Value) </H4>
+&#149; Remove table record.<BR>
+ex.: <SPAN CLASS="TEx">Ret = MB.RemoveRecord("Table1", "Color", "red")</SPAN><BR><BR>
+
+&#160;&#160; Removes any record (row) from table where <B>Value</B> matches value in
+<B>ColName</B> column.
+<BR><BR>
+<B>Return:</B> 0-success. 1-invalid table or column name. other-MSI error code.
+On error, <B>ErrorString</B> property contains error description.<BR><BR>
+
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------  get sel values ------------  -->
+<A NAME="getsel"></A>
+<H4>Function GetSelectValues(TableName, ColumnName, ColumnToCompare, ValueToCompare)  </H4>
+&#149; Returns an array of all values in specified column.<BR>
+ex.: <SPAN CLASS="TEx">ARet = MB.GetAllValues("Table1", "Name", "Color", "Red")</SPAN><BR><BR>
+
+GetSelectValues returns specific values <B>WHERE</B> a second column value
+matches. In the example above, all values in the <I>Name</I> column will be returned
+from rows where the <I>Color</I> column contains "Red".<BR><BR>
+
+<B>Return:</B> Return is an array. ARet(0) is an error code. If the column is
+a string data type then eror code must be converted from string. A return of -1
+indicates an error and the <B>ErrorString</B> property will contain an error description.
+A value of 0 indicates no matches. Otherwise, UBound(ARet) is the number
+of values returned.
+
+
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="getall"></A>
+<H4>Function GetAllValues(TableName, ColumnName)  </H4>
+&#149; Returns an array of all values in specified column.<BR>
+ex.: <SPAN CLASS="TEx">ARet = MB.GetAllValues("Table1", "Column2")</SPAN><BR><BR>
+
+<B>Return:</B> Return is an array. ARet(0) is an error code. If the column is
+a string data type then eror code must be converted from string. A return of -1
+indicates an error and the <B>ErrorString</B> property will contain an error description.
+A value of 0 indicates no records in table. Otherwise, UBound(ARet) is the number
+of values returned.
+
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- -------------------------------- set select values --------------------------------------------------  -->
+<A NAME="setsel"></A>
+<H4>Function SetSelectValues(TableName, ColumnToSet, ValueToSet, ColumnToCompare, ValueToCompare)</H4>
+&#149; Sets specific values in a table column.<BR>
+ex.: <SPAN CLASS="TEx">Ret = MB.SetSelectValues("Table1", "Color", "Red", "Name", "Rose")</SPAN><BR><BR>
+
+&#160;&#160; SetSelectValues sets all column values <B>WHERE</B> another column
+value matches. In the example above, all values in the <I> Color</I> column would
+be set to "Red" if the value in the <I>Name</I> column of the same row is "Rose".<BR><BR>
+
+&#160;&#160; SetSelectValues will typically be used to set a single value based on the
+unique key value. For instance, in example above, if the "Name" column is a key value
+then only one record can have the value "Rose" in the Name column. Therefore only one
+value in the Color column will be changed.<BR>
+&#160;&#160; Attempting to change a key value in MSI raises an error. It could be done by
+writing a function that first copies all record values, then deletes the record, then writes a new record.
+However, that has not been done in MBase. If you attempt to change a key value (usually the first column)
+it will just raise SetSelectValues error 3. To change a key value you must delete the record and create a new one.<BR><BR>
+
+<B>Return:</B> 0-success. 1-invalid table or column name. 2-invalid data type (an integer value was sent as string).
+3-attempting to set key value. other-MSI error code. On error, <B>ErrorString</B> property contains error description.<BR><BR>
+
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ---------------------------------------------------------------- setall values ------------------  -->
+<A NAME="setall"></A>
+<H4>Function SetAllValues(TableName, ColumnToSet, ValueToSet) </H4>
+&#149; Sets all values in a given column to a specific value.<BR>
+ex.: <SPAN CLASS="TEx">Ret = MB.SetAllValues("Table1", "Color", "Red")</SPAN><BR><BR>
+
+<B>Return:</B> 0-success. 1-invalid table or column name. 2-invalid data type (an integer value was sent as string).
+other-MSI error code. On error, <B>ErrorString</B> property contains error description.<BR><BR>
+
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ---------------------------------------------- list cabs ------------------------------------  -->
+<A NAME="cablist"></A>
+<H4>Function GetCABList()</H4>
+&#149; Returns a list of embedded CAB files in an MSI or MSM file.<BR>
+ex.: <SPAN CLASS="TEx">Array1 = MB.GetCABList()</SPAN><BR><BR>
+
+<B>Return:</B> Returns an array where array(0) is a string representation of the number
+of CABs in the file. (Ex. "0", "1", etc. Generally there is only one CAB, at most.) If array(0) is greater
+than 0, other array elements will hold CAB names. For example, if array(0) = "2" then array(1)
+and array(2) will both hold CAB data stream names.<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ---------------------------------------------- extract cab ------------------------------------  -->
+<A NAME="cabext"></A>
+<H4>Function ExtractCAB(CabName)</H4>
+&#149; Extracts a CAB file from an MSI or MSM file.<BR>
+ex.: <SPAN CLASS="TEx">ErrorCode = MB.ExtractCAB("data1.cab")</SPAN><BR><BR>
+
+<B>CabName</B>: Must be the string that identifies a CAB in the file. Use
+GetCABList to obtain valid CAB names.<BR><BR>
+
+<B>Return:</B> 0-OK. 1-no MSI file loaded. 2-Extraction failed in some way without raising error. Other - return is an error code and ErrorString property
+contains error information. If method is successful, CAB file is extracted to parent folder of
+open MSI/MSM file.     <BR><BR>
+
+
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ---------------------------------------------- insert cab ------------------------------------  -->
+<A NAME="cabins"></A>
+<H4>Function InsertCAB(CabName, NewCABPath)</H4>
+&#149; Inserts a CAB file into an MSI or MSM file.<BR>
+ex.: <SPAN CLASS="TEx">ErrorCode = MB.InsertCAB("data1.cab", "C:\folder1\newfiles.cab")</SPAN><BR><BR>
+
+<B>CabName</B>: String that identifies name of CAB data stream in the file. This is <B>not</B> the
+name of the CAB file being inserted. It is the name of the resource in the MSI/MSM file. For example,
+in an MSM file the CAB is always named "MergeModule.CABinet". That is the name of the data stream
+in the MSM file. The name of the CAB being inserted is ignored. <BR><BR>
+
+<B>NewCABPath</B>: Full path of CAB file to be inserted into MSI or MSM file.<BR><BR>
+
+<B>Notes:</B> If <B>CabName</B> already exists in the MSI or MSM file then that 
+data stream <B>will be replaced</B> by the new CAB. If the name does not already
+exist the new CAB will be inserted as a new data stream.
+
+<BR><BR>
+
+<B>Return:</B> 0-OK. 1-NewCABPath is an invalid path. Other - return is an error code and ErrorString property
+contains error information. If method is successful, CAB file is inserted into open MSI/MSM file.     <BR><BR>
+
+
+<A HREF="#top">Back to Top</A><BR><BR>
+
+
+
+
+
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="gettable"></A>
+<H4>Function GetTableContent(TableName)</H4>
+&#149; Returns all content of a specific table as a formatted string of rows.<BR>
+ex.: <SPAN CLASS="TEx">sRet = MB.GetTableContent("Table1")</SPAN><BR><BR>
+
+<B>Return:</B> On error (for example, if table name is invalid) return is "".
+Otherwise it is the table contents formatted such that each row ends with a carriage return
+and a tab character separates column values.
+
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="getchart"></A>
+<H4>Function GetTableChart </H4>
+&#149; Returns a chart showing the file's table layout.<BR>
+ex.: <SPAN CLASS="TEx">sRet = MB.GetTableChart</SPAN><BR><BR>
+
+<B>Return: </B> On error, return is "". Otherwise return is a formatted string
+that lists each table with coulmns. Each table name is on its own line. Each column name is on a separate
+line, inset, below the respective table name. Next to each column is "0" to denote a numeric integer
+value or "1" to denote a string value.
+
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="export"></A>
+<H4>Function ExportAllTables(FolderPath)</H4>
+&#149; Exports all tables to text file.<BR>
+ex.:<SPAN CLASS="TEx"> Ret = MB.ExportAllTables("C:\")</SPAN><BR><BR>
+
+&#160;&#160; Uses the MSI database Export function to write copies of all tables
+to disk. Function will create a folder named "export" in <B>FolderPath</B> folder.
+The <I>export</I> folder will contain one text file for each table in database.
+<BR><BR>
+<B>Return: </B> 0-success. 1-Folder path is invalid. other- <B>ErrorString</B> property will contain error description.
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="errs"></A>
+<H4>Property ErrorString</H4>
+&#149; Returns error information about last error.<BR>
+ex.:<SPAN CLASS="TEx"> s = MB.ErrorString</SPAN><BR><BR>
+
+&#160;&#160; With most of the MBase functions, there is error trapping
+built in that checks for valid table names, etc. There is also error trapping
+that will save any MSI error description as the <B>ErrorString</B> property
+if error code is not 0 when the function is finished.
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="tabnames"></A>
+<H4>Function GetTableNames(ReturnArray)</H4>
+&#149; Returns list of tables.<BR>
+ex.: <SPAN CLASS="TEx">NumberTables = MB.GetTableNames(ARet)</SPAN><BR><BR>
+
+&#160;&#160; A simple method that just returns list of table names in MSI file.
+The list is returned as an array. Function return is number of tables in array.
+(Array is 1-based).
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="colnames"></A>
+<H4>Function GetTableColumns(TableName, ReturnArray)</H4>
+&#149; Returns an array of column names in table.<BR>
+ex.: <SPAN CLASS="TEx">Ret = GetTableColumns("Table1", ARet)</SPAN><BR><BR>
+
+&#160;&#160; In the example Ret returns number of columns. If Ret is greater
+than 0 then <B>ReturnArray</B> is a list of column names, starting with ReturnArray(1).
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="coltypes"></A>
+<H4>Function GetTableColumnTypes(TableName, ReturnArray)</H4>
+&#149; Returns an array of column data types.<BR>
+ex.: <SPAN CLASS="TEx">Ret = GetTableColumnTypes("Table1", ARet)</SPAN><BR><BR>
+
+&#160;&#160; In the example Ret returns number of columns. If Ret is greater
+than 0 then <B>ReturnArray</B> is a numeric list of column data types, starting with ReturnArray(1).
+A value of 0 indicates integer data. A value of 1 indicates string data.
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="colspectypes"></A>
+<H4>Function GetTableColumnSpecificTypes(TableName, ReturnArray)</H4>
+&#149; Returns an array of column data type values.<BR>
+ex.: <SPAN CLASS="TEx">Ret = GetTableColumnSpecificTypes("Table1", ARet)</SPAN><BR><BR>
+
+&#160;&#160; This function is similar to the function above. The difference is that it returns
+specific column type information that might be relevant for Windows Installer. <B>GetTableColumnTypes</B>
+returns only a numeric or string distinction. It is designed for use with custom MSI usage. <B>GetTableColumnSpecificTypes</B>
+returns numeric flag values that indicate the full spectrum of Windows Installer data type information. See next
+listing, <B>GetColumnDataType</B>, for further explanation.<BR><BR>
+
+<B>Return:</B> 0-success. ReturnArray contains column data values. As with other functions here, this is a 1-based
+array.  -1 - Invalid table name.
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="coldattype"></A>
+<H4>Function GetColumnDataType(TableName, ColumnName, ReturnArray)</H4>
+&#149; Returns extended column data type information.<BR>
+ex.: <SPAN CLASS="TEx">Ret = GetColumnDataType("Table1", "Column1", ARet)</SPAN><BR><BR>
+
+&#160;&#160; <B>GetColumnDataType</B> is for use in the context of Windows Installer. It returns
+W.I.-specific column type information that may be useful when editing an installation MSI. <SPAN CLASS="TR">
+This type data is displayed in the MSI Editor when a column name (along top) is clicked.</SPAN><BR><BR>
+
+&#160;&#160; The column data type information requires an explanation. Column data types are
+a good example of both the bizarre design of Windows Installer and the apparently deliberate obfuscation.
+The more one works with Microsoft designs, the more it seems that the company is populated by
+teenagers with a secret decoder ring fetish. Nearly everything is more obscure, abstruse, and complex
+than it needs to be.<BR><BR>
+
+&#160;&#160; In regard to MSI column data types, to begin with, getting at column information is awkward because 
+one needs to access the<B> _Columns</B> table,
+which lists <I>all</I> columns in the database in one big pile. Columns for a particular table have
+to be picked out of that. In addition, the <B>_Columns</B> table has a <B><I>secret</I></B> column named <B>Type</B>,
+which Microsoft has not documented. Without knowing about the <B>Type</B> column, documenting an MSI
+table is far more awkward.<BR><BR>
+
+&#160;&#160; Despite the fact that Microsoft makes it so hard to look at column data types,
+those types can often be relevant. For instance, a string type usually has a maximum length
+specified. If you're editing an MSI file it helps to know that sort of thing.<BR><BR>
+
+&#160;&#160; The actual types here also require explanation. Microsoft has designated a large
+number of data types for MSIs. If you look in the MSI help file under "data types" you'll find 25
+types listed. But those are actually "pseudo-types". They are not data types in any conventional
+sense. For instance, the "Cabinet" type is a string - the name of a CAB file. Microsoft has just
+designated some such values as unique types, willy nilly.<BR><BR>
+
+&#160;&#160; While this data type mess is not officially documented, it can be mapped out
+by using the secret <B>Type</B> column of the <B>_Columns</B> table to get the type flags for specific columns.
+The <B>Type</B> column type flag is a numeric value that packages several pieces of imformation
+about the column data type. <B>Basically, there are 5 real types: string, short integer, long integer,
+binary (byte stream), and localized.</B> A localized type is a value, usually (always?) a string, that is
+a local variable, typically pointing to another table. <BR>
+&#160;&#160; String values have a maximum length aspect
+to their type. Localized values also do, but often that value is set to 0. In addition to the basic 5 data types,
+there are the Boolean <B>Nullable</B> and <B>Key</B> "properties". When Nullable is True it means that the column does
+not require a value. It can be left blank. Key refers to key columns. Usually there is one primary key
+column, which must have a unique value in each row. But sometimes there are two columns that together
+comprise the primary key. (Not to be confused with an <I>external</I> key, a key into another table.)
+<I>See the documentation on the various Windows Installer tables in the MSI.CHM help file for
+examples of these flags. </I><BR><BR>
+
+&#160;&#160; So each table column has several aspects to it's data type. The flag value in
+the secret <B>Type</B> column of the <B>_Columns</B> table is a short integer that works as follows:<BR><BR>
+<SPAN CLASS="TEx">
+H1000 (4096) nullable  <BR>
+H2000 (8192) key </SPAN> <BR><BR>
+            <SPAN CLASS="TEx">
+HD00 (3328) string  <BR>
+H500 (1280) short integer  <BR>
+H900 (2304) binary <BR>
+H100 (256) long integer <BR>
+HF00 (3840) localized [variable]</SPAN>
+<BR><BR>
+&#160;&#160; The low byte of the integer specifies maximum length, where relevant. When formatted in hex,
+the Type flag will be a 3 or 4 digit number. For example, H1D20 denotes a nullable string of maximum length 32.
+(Note that short and long integer types also use the low byte marker, but in those cases the value is
+redundant. A long integer seems to always include flags for H104 and a short seems to always include H502.
+That makes sense. A long is 4 bytes and a short is two bytes. But there's no need to check the max. length
+value in order to know that, and there seem to be no other numeric types, such as an 8-byte integer or Double value.
+If desired, a max. length check could be added to this function to confirm numeric data types. As written,
+the function only checks max. length for string and localized types.)
+<BR><BR>
+
+&#160;&#160; The <B>GetColumnDataType</B> function retrieves the flag integer from the secret
+<B>Type</B> column of the <B>_Columns</B> table and processes it. If the function succeeds, it returns
+a numeric array of UBound(3). The array is used in order to return all relevant information about the
+column data type while keeping the function lean, avoiding the creation of a class or dictionary
+for every call. (A custom data structure would have been ideal here, but VBScript can't handle that.) The return works as 
+follows:<BR><BR>
+ If <B>GetColumnDataType</B> returns 0 (success), <B>ReturnArray</B> will contain the following numeric values:<BR>
+<BR>
+&#160; &#160; ReturnArray(0): IsNullable. &#160; 0=False. 1=True.<BR>
+&#160; &#160; ReturnArray(1): IsKey. &#160; 0=False. 1=True.<BR>
+&#160; &#160; ReturnArray(2): Data type. &#160; 0-string. 1-binary. 2-short int. 3-localized. 4-long int.<BR>
+&#160; &#160; ReturnArray(3): Max. Length. &#160; Contains max. length value where relevant.<BR><BR>
+
+&#160;&#160;So IsNullable is basically a Boolean value returned numerically. Likewise for
+IsKey. The data type return values were assigned in such a way as to make them more memorable.
+Binary, short int. and long int. were all assigned to the number that represents the size of their data: 1 byte for binary,
+2 bytes for short, 4 bytes for long.<BR>
+&#160;&#160; Example returns: In the example above, where a nullable string of max. len. 32 has a Type flag
+of H1D20 (7456), that will come back in ReturnArray like so - ReturnArray(0) = 1. ReturnArray(1) = 0. ReturnArray(2) = 0.
+ReturnArray(3) = 32. A non-nullable, non-key long integer would return 0, 0, 4, 0. Nullable, non-key binary data would
+return 1, 0, 1, 0. Etc.
+<BR><BR>
+
+<B>Return:</B> <BR>
+&#160; 0 - success. ReturnArray contains information, as detailed above.<BR>
+-1 - invalid table name.<BR>
+-2 - invalid column name or invalid data returned for Type flag.<BR><BR>
+
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="col1"></A>
+<H4>Function GetColumn1(TableName)</H4>
+&#149; Returns first column name for given table.<BR>
+ex.: <SPAN CLASS="TEx">sCol = GetTableColumn1("Table1")</SPAN><BR><BR>
+
+&#160;&#160; This is a simple function that just provides an easy way to get
+the name of the first column in a table. The first column is typically the
+primary key, and getting column names involves a multi-step process of getting
+an array item from a Dictionary object. So this function is provided to simplify things.
+
+
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="find"></A>
+<H4>"Find" Functions</H4>
+&#160;&#160; The May, 2006 update to the editor includes expanded table search functionality.
+
+There are 3 methods involved:<BR><BR>
+
+<B>Function ExportAllValidTables(FolderPath)</B> <BR>
+<B>Function LoadFindData()</B><BR>
+<B>Function Find1(StringTofind)</B>
+<BR><BR>
+
+&#160;&#160; The way it works is that <B>ExportAllValidTables</B> is first called.
+In the MSI Editor the tables are exported to a folder in the TEMP folder when a
+file is loaded, then the folder is deleted when that file is unloaded. That folder path is a
+global variable within the class. It is hard-coded as:<BR>
+<B> %TEMP%\msi-ed-fol</B><BR> and
+LoadFindData assumes that path. <B>ExportAllValidTables</B>
+is used because it exports only tables that have content and also filters out
+a few other tables (in the case of MSI software installation files) that are not relevant.
+That culling allows search to work faster.<BR><BR>
+
+&#160;&#160; After the tables have been exported as text files, <B>LoadFindData</B>
+is called, which reads in each table and loads them into a Dictionary object wherein
+each Dictionary Item is an array of rows from a given table. <B>LoadFindData</B>
+returns True if the folder full of table files was found and at least one table
+file had data.<BR><BR>
+
+&#160;&#160; Those two functions are necessary before using the search function.
+That's what the <B>Enable Find</B> button in the editor does. In order to avoid bogging
+down with extra large files, a file's tables are not processed and loaded into the
+Dictionary unless <B>Enable Find</B> is clicked after loading a given file.<BR><BR>
+
+&#160;&#160; Having called the first two functions successfully, <B>Find1</B> can then
+be used. <B>Find1</B> searches the entire database for matching strings. Unfortunately, 
+while the Export method exports tables alphabetically, the same does not seem to
+work when using a <B>SELECT</B> query. Even when <B>ORDER BY</B> is used in the
+query to enforce alphabetical return, MSIEXEC seems to usually return two cycles
+of alphabetical listings. In other words, the first column will be in alphabetical order, 
+but the column items go from A-Z twice as one scrolls through them. As a result,
+it's difficult to predict in which row the string was found. So <B>Find1</B> does not report
+the row where a match is found. Rather, the return is as follows:<BR><BR>
+
+If no matches are found, <B>Find1</B> returns "".<BR><BR>
+
+When matches <I>are</I> found, a string is returned that is structured as<BR><BR>
+<B>Table-name - 1st-column-value |<BR>
+     Table-name - 1st-column-value |<BR>
+     Table-name - 1st-column-value |</B><BR>
+<BR>
+
+&#160;&#160; In other words, each match will be represented by a line in the return string.
+Each line will contain the name of the table where the match was found, and the value
+of the first column in the row where the match was found. When a search is done in the MSI Editor,
+the multi-line textbox in the Find panel will fill with matches. You can then locate each match by loading the
+respective table and scrolling down to the respective first column value. <BR><BR>
+
+&#160;&#160; So, imagine that you search for "blue" and a table named "Files" contains a row
+with "blue" or "bluesky" or "trueblue", etc. in one of the fields. And that row contains "red" in the
+first column. <B>Find1</B> will return that match as: "Files - red |".
+<BR><BR>
+&#160;&#160; The reason for the format is connected with DHTML requirements:
+In the MSI Editor, a line can be double-clicked in the list of found matches, which
+will load the respective table and scroll to the match. That function uses TextRange
+object methods to read the text of the line clicked. TextRange methods are limited and clunky.
+The process is made easier by using " - " and "|" as markers.
+
+<BR><BR>
+<B>Note</B> that the tables are exported when a file is loaded. Changes made to the database
+while the file is loaded will not be reflected in "Find" until the database is reloaded.<BR><BR>
+
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<A NAME="eduse"></A>
+<H4>Using the Editor</H4>
+
+&#160;&#160; Most of the editor functions are self-explanatory.
+There are functions on the menu to open files and perform operations.
+There is no need to save files. When you add a table, remove a row, etc. the
+change is saved.<BR><BR>
+
+&#160;&#160; Start by going to the File menu to open an MSI file.
+The file will be loaded and you can view each table by using the
+table dropdown list. <BR><BR>
+
+&#160;&#160; Many of the menu items have help. Just click the <B>?</B>
+button to see context help for that item.
+
+<H5>Changing cell data in rows:</H5>
+To change data in a cell, click the cell. A text prompt appears. Enter new text.
+To save changes, <B>double-click the text prompt.</B> To cancel, simply do
+not double click it. Clicking elswhere will make the text prompt disappear.<BR><BR>
+
+<H5>Find:</H5>
+
+The Find function has been updated. See topic above for explanation. <BR><BR>
+
+<H5>Edit Summary Properties</H5>
+
+See the GetSummary and SetSummary function topics for this. Editing summary info. has limitations.<BR><BR>
+
+<H5>Using the Editor to Adjust Software Installers - Tips</H5>
+&#160;&#160;
+One of the problems that can commonly occur with software installation is that
+the software has limitations that may not be valid. For example, both Acrobat
+Reader 7 and HP printer software installers require Internet Explorer 5.01, yet neither
+requires a browser to function. Asking people to update Internet Explorer unnecessarily - a risky
+thing to do since IE is so embedded into Windows - is entirely unacceptable.
+The MSI Editor can be used to alter installation requirements.<BR><BR>
+
+ <B>It is usually possible to change installation requirements that are coded into MSI installer files...<BR></B><BR>
+&#160;&#160;
+  In general, the <B>LaunchCondition</B> table of an MSI installer is the place to look for
+  limitations to install. Other things to check: The <B>AppSearch</B> table is used to list
+  files or settings that the installer might need to check. Typically the AppSearch table
+  will list an item that gets checked during install. The <B>_Signature</B> property there
+  points to a listing in the <B>RegLocator, IniLocator, CompLocator, and/or DrLocator</B> tables
+  that identifies the item - a Registry setting, file version, etc. If one of these items
+  is also involved with a pre-requisite for installation (for example, SHDOCVW.DLL needs
+  to be located and checked to get the IE version) then it wil be referenced in the
+  <B>LaunchCondition</B> table. The <B>MinVersion</B> and <B>MaxVersion</B> fields in the <B>Signature</B> table
+  will be the likely place where something like a required version of IE will be listed. (In the Acrobat Reader 7 installer
+  the culprit is a row in the <B>Signature</B> table where the <B>FileName</B> field is "SHDOCVW.DLL" (that's IE)
+  and the <B>MinVersion</B> field is IE 5.01. (To further confuse things, there actually never was a
+  version 5.01. Version "5.00" in Win98SE was v. 5.00.2614.3500. So-called version "5.01" began
+  with Windows 2000 IE version 5.00.2516.1900 and runs through Win2000 IE version 5.00.3700.1000!)
+
+
+<BR><BR>
+<H5>Troubleshooting: Top table view goes blank</H5>
+
+&#160;&#160; Occasionally when certain changes of focus occur,
+the top table view may go blank.This "blankout" problem is a DHTML issue. It will not affect
+working with the database but may disable the window in some cases if
+all menus have disappeared.<BR><BR>
+&#160;&#160;  In the May, 2006 update this bug has been greatly
+improved upon, and may be fixed.The fix used, which seems to work well, was to call a Refresh on
+the main page table peridodically after focus has been shifted programmatically. The Refresh button 
+does the same thing. It will call a Refresh
+on the main table and also scroll the page to the top. If you encounter "blankouts"
+and can still see the Refresh button and/or the table list, try using either one of those
+to refresh the view.
+
+<H5> Troubleshooting: Errors writing values to table cells</H5>
+ <B>There are a few issues to be aware of when editing databases:</B><BR><BR>
+
+&#149; Values cannot be changed in the first column because it is the primary key.
+The row must be deleted and a new one created.<BR><BR>
+
+&#149; Non-numeric values written to numeric cells will fail. That includes things like "00034".
+If you need to use ID numbers like that it should be a string data type.<BR><BR>
+
+&#149; Some tables cannot be written. For example, in an MSI file you may sometimes
+see a table name starting with "_", such as a _Validation table that has been left in.
+Such MSI tables are "virtual" tables that cannot be written to.
+
+<H5> Troubleshooting: Importing tables fails</H5> 
+
+Windows Installer is picky about imported tables. Check to make sure that all
+values are valid, that all lines contain all necessary entries, that all non-nullable
+values contain some data, and that there is a carriage return at the end of
+the file.
+<H5> Troubleshooting: Table view hangs</H5> 
+
+  The table view window is a series of TABLE elements, with each cell being a TD.
+  The rows (TABLEs) and cells (TDs) are generated dynamically and with script
+  and cell data is filled in. In cases of very big tables the view may appear to hang.
+  If a table has several hundred rows it may take a few seconds to process.
+  If a table has several thousand rows it may not be feasible to view it. The view is
+  limited by Internet Explorer's ability to dynamically generate HTML.
+
+<H5> Troubleshooting: "Object Required" error</H5> 
+
+   When errors occur they are usually reported in lower left. If you see
+   "Error 424: Object Required" that may be misleading. It probably
+   does not mean an object reference is missing. That seems to be a quirk
+   of Microsoft database error messages. If you get this error, check for
+   errors in the syntax of the operation you are trying to perform: You may
+   be entering a non-numeric value into a numeric column or you may have
+   invalid syntax to create a row or table, for example.
+<BR><BR>
+<A HREF="#top">Back to Top</A><BR><BR>
+
+<!-- ----------------------------------------------------------------------------------  -->
+<!-- ----------------------------------------------------------------------------------  -->
+<!-- ----------------------------------------------------------------------------------  -->
+<!-- ----------------------------------------------------------------------------------  -->
+
+<HR>
+
+<!---------------------------------------->
+<B>License:</B><BR><BR>
+
+&#160;&#160; You use all script code and components from JSWare at your own risk.<BR><BR>
+
+  &#160;&#160; The components (compiled DLL and EXE files) may be used for personal or
+commercial purposes. No payment or attribution is required for either use.
+The components may be redistributed if they are required as support files 
+for scripts or software that you have written.<BR>
+   &#160;&#160; Also, the script code may be used freely, in part or as whole scripts,
+for any purpose, personal or commercial, without payment or attribution.<BR><BR>
+
+  &#160;&#160; I ask only that you not redistribute these scripts and components, except
+as required for your direct use. Instead, please direct others to obtain copies
+of JSWare scripts and components directly from www.jsware.net.<BR><BR>
+
+ &#160;&#160; Also, none of the code here may be redistributed under another license. If a 
+work using code from JSWare is distributed with restrictions of any kind 
+the code from JSWare must be kept exempt from those restrictions. 
+This includes, but is not limited to, code sold for profit, code with usage restrictions
+and code distributed as so-called "Open Source" with redistribution restrictions. <BR><BR>
+
+    &#160; &#160;  Joe Priestley<BR><BR>
+</FONT></DIV>
+<HR>
+<DIV align="center">
+<FONT FACE="arial" COLOR="#000000" SIZE=3><B>
+ MBase &#160;&#149;&#160; JSWare &#160;&#149;&#160; www.jsware.net &#160;&#149;&#160; jsware@jsware.net<BR>
+</B></FONT>
+<HR><BR>
+
+</DIV>
+</BODY></HTML>
+

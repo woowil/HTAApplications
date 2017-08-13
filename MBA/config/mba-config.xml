@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="../data/xml/mba-xsl-config.xsl"?>
+
+<mba>
+	<mba_revision version="1.0" createdBy="Woodworth Wilson" createDate="2007-08-13" updatedBy="Woodworth Wilson" updateDate="2008-06-02" />
+	<mba_information name="MBA" vendor="nOsliw Solutions (c)" title="Module Based HTA Application" shortname="MBA" />
+	<mba_config>
+		<config category="config" type="path" name="PathAbt" value=".\config\about"/>
+		<config category="config" type="path" name="PathBin" value=".\data\bin"/>
+		<config category="config" type="path" name="PathDoc" value=".\data\doc"/>
+		<config category="config" type="path" name="PathHtm" value=".\data\htm"/>
+		<config category="config" type="path" name="PathPic" value=".\data\pic"/>
+		<config category="config" type="path" name="PathPicIcon" value="data/pic/menu" />
+		<config category="config" type="path" name="PathCSS" value=".\source\style"/>
+		<config category="config" type="path" name="PathCSSLib" value=".\source\style-library"/>
+		<config category="config" type="path" name="PathScript" value=".\source\scripts"/>
+		<config category="config" type="path" name="PathScriptCust" value=".\source\scripts-customer"/>
+		<config category="config" type="path" name="PathScriptLib" value=".\source\scripts-library"/>
+		<config category="config" type="path" name="PathScriptLibPlatform" value=".\source\scripts-platform"/>
+		<config category="config" type="path" name="PathModule" value=".\module"/>
+		<config category="config" type="path" name="PathSkins" value=".\addons\skins"/>
+		<config category="config" type="path" name="PathPlugins" value=".\addons\plugins"/>
+		<config category="config" type="path" name="PathSource" value=".\source"/>
+		<config category="config" type="path" name="PathTemp" value="C:\Temp"/>
+		<config category="config" type="path" name="PathAppData" value="\nOsliw Solutions\MBA"/>
+		
+		<config category="config" type="registry" name="PathHKCU" value="HKCU\Software\nOsliw Solutions\HTA Applications\MBA\"/>
+		<config category="config" type="registry" name="PathHKLM" value="HKLM\Software\nOsliw Solutions\HTA Applications\MBA\"/>
+		
+		<config category="config" type="file" name="FileCSSHTA" value=".\source\style\mba-common.css"/>
+		<config category="config" type="file" name="OfficeXP_CSS" value="./addons/skins/officexp/office_xp.css" subtype="css" description="Office XP Skin" />
+		<config category="config" type="file" name="Classic_CSS" value="./addons/skins/classic/classic.css" subtype="css" description="Windows Classic Skin" />
+		<config category="config" type="file" name="FileConfig" value=".\config\mba-config.xml"/>
+		<config category="config" type="file" name="FileModule" value="#module_name#\mba-module.xml"/>
+		
+		<config category="config" type="option" name="ToolsOptionsSessionTimeout" value="30"/>
+		<config category="config" type="option" name="ToolsOptionsDeleteLogs" value="0"/>
+		<config category="config" type="option" name="ToolsOptionsReloadAtMidnight" value="1"/>
+		<config category="config" type="option" name="ToolsOptionsHideLogs" value="0"/>
+		<config category="config" type="option" name="ToolsOptionsHideLogs" value="0"/>
+		<config category="config" type="option" name="loadmodule" value="1"/>
+		
+		<config category="config" type="function" name="f_init" value="" comment="This is included in function: 'mba_main_onload()'"/>
+		<config category="config" type="function" name="f_menubar" value="mba_common_menu"/>
+		<config category="config" type="function" name="f_navigate" value="mba_common_navigate"/>
+		<config category="config" type="function" name="f_forminit" value="" comment="This is included in function: 'mba_main_onload()'"/>
+		<config category="config" type="function" name="f_formbehavior" value="mba_common_formbehavior"/>
+		<config category="config" type="function" name="f_formactivate" value="mba_common_formactivate"/>
+		<config category="config" type="function" name="f_formvalidate" value="" comment="This is not needed for the default sections (Home, Options, Debug, Help)"/>
+		<config category="config" type="function" name="f_main" value="mba_common_main"/>
+		<config category="config" type="function" name="f_event" value="mba_common_event"/>
+	</mba_config>
+</mba>
+
+

@@ -1,0 +1,12 @@
+
+R E A L E A S E   N O T E S
+
+MODULE BASED APPLICATION (MBA)
+
+1.1.0
+
+
+1.0.0
+02.08.2007 Added module Games
+03.08.2007 Added module Utilities
+02.06.2008 Release - BETA 1

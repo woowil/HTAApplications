@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+
+<mba_module>
+	<module_revision version="1.0" createdBy="Woodworth Wilson" createDate="" updatedBy="Woodworth Wilson" updateDate="" />
+	<module_information name="Example" vendor="nOsliw Solutions" title="nOsliw Solutions :: [Example]" shortname="example" />
+	<module_config>
+		<config category="module" type="path" name="PathDB" value="data\db"/>
+		<config category="module" type="path" name="PathBin" value="data\bin"/>
+		<config category="module" type="path" name="PathPic" value="data\pic"/>
+		<config category="module" type="path" name="PathDoc" value="data\doc"/>
+		<config category="module" type="path" name="PathScript" value="scripts"/>
+		<config category="module" type="path" name="PathStyle" value="scripts"/>
+		
+		<config category="module" type="file" name="FileHTML" value="mba-[example]-html.htm"/>
+		<config category="module" type="file" name="FileDocs" value="mba-[example]-docs.ini"/>
+		<config category="module" type="file" name="FileDB" value="data\db\mba-example-unknown.mdb"/>
+	
+		<config category="module" type="function" name="f_init" value="example_init"/>
+		<config category="module" type="function" name="f_menubar" value="example_menu"/>
+		<config category="module" type="function" name="f_navigate" value="example_navigate"/>
+		<config category="module" type="function" name="f_forminit" value="example_forminit"/>
+		<config category="module" type="function" name="f_formbehavior" value="example_formbehavior"/>
+		<config category="module" type="function" name="f_formactivate" value="example_formactivate"/>		
+		<config category="module" type="function" name="f_formvalidate" value="example_formvalidate"/>
+		<config category="module" type="function" name="f_main" value="example_main"/>
+		<config category="module" type="function" name="f_event" value="example_event"/>
+	</module_config>
+</mba_module>

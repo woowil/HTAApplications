@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+
+<mba_module>
+	<module_revision version="1.0" createdBy="Woodworth Wilson" createDate="2007-08-30" updatedBy="Woodworth Wilson" updateDate="" />
+	<module_information name="Games" vendor="nOsliw Solutions" title="nOsliw Solutions :: Games" shortname="games" />
+	<module_config>
+		<config category="module" type="path" name="PathBin" value="data\bin"/>
+		<config category="module" type="path" name="PathPic" value="data\pic"/>
+		<config category="module" type="path" name="PathDoc" value=".\"/>
+		<config category="module" type="path" name="PathScript" value="scripts"/>
+		<config category="module" type="path" name="PathStyle" value="scripts"/>
+		
+		<config category="module" type="file" name="FileHTML" value="mba-games-html.htm"/>
+		<config category="module" type="file" name="FileDocs" value="mba-games-docs.ini"/>
+		<config category="module" type="file" name="FileDB" value="data\db\mba-games-unknown.mdb"/>
+	
+		<config category="module" type="function" name="f_init" value="games_init"/>
+		<config category="module" type="function" name="f_menubar" value="games_menu"/>
+		<config category="module" type="function" name="f_navigate" value="games_navigate"/>
+		<config category="module" type="function" name="f_forminit" value="games_forminit"/>
+		<config category="module" type="function" name="f_formbehavior" value="games_formbehavior"/>
+		<config category="module" type="function" name="f_formactivate" value="games_formactivate"/>		
+		<config category="module" type="function" name="f_formvalidate" value="games_formvalidate"/>
+		<config category="module" type="function" name="f_main" value="games_main"/>
+		<config category="module" type="function" name="f_event" value="games_event"/>
+	</module_config>	
+</mba_module>

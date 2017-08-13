@@ -1,1 +1,174 @@
-This is a planned Release
+<!DOCTYPE html>
+
+<HTML>
+<HEAD>
+<meta http-equiv="X-UA-Compatible" content="IE=11" />
+<META http-equiv="Content-Language" content="en-us">
+<!--<META http-equiv="Content-Type" content="text/html; charset=windows-1252"> -->
+<META http-equiv="Content-Type" content="text/html; charset=UNICODE">
+
+<SCRIPT language="JavaScript">
+
+// This prevents resizeTo from flashing on HTA invoke
+// This must be done before the hta tag
+
+window.resizeTo(1,1);
+window.moveTo(-150,1);
+
+</SCRIPT>
+
+<TITLE>.</TITLE>
+
+<HTA:APPLICATION ID="oMBASplash"
+	applicationName	= "nOsliw :: MBA :: Splash"
+	border			= "none"
+	borderStyle		= "raised"
+	caption			= "no"
+	icon			= ".\data\pic\mba_icon.ico"
+	maximizeButton	= "no"
+	minimizeButton	= "no"
+	contextMenu		= "no"
+	innerBorder		= "no"
+	selection		= "no"
+	showInTaskbar	= "no"
+	singleInstance	= "yes"
+	sysMenu			= "no"
+	navigable		= "no"
+	scroll			= "no"
+	version			= "1.0"
+	scrollFlat		= "no"
+	windowState		= "normal"
+/>
+
+<STYLE type="text/css" id="main_css">
+@charset "Windows-1251";
+
+BODY {
+	border: 1px solid #D0D0D0;
+}
+
+.mba-div-filter{
+	width:100%;
+	height: auto;
+	display: none;
+	filter:progid:DXImageTransform.Microsoft.Fade(duration=.3);
+}
+
+.mba-info{
+	color: #545454;
+	font: small-caps 11px Arial;
+	text-transform: uppercase;
+}
+
+.mba-progress{
+	color: #545454;
+	font: normal 11px Arial;
+	text-indent: 30px;
+}
+
+#oDivText {
+	font: bold 30px Tahoma;
+	color:#C0C0C0;
+	display: none;
+	vertical-align:middle
+}
+
+</STYLE>
+
+<script language="JScript">
+
+setTimeout("mba_position(750,330)",0)
+var oFso = new ActiveXObject("Scripting.FileSystemObject");
+var oWsh = new ActiveXObject("WScript.Shell");
+var oShl = new ActiveXObject("Shell.Application")
+
+var splash = {
+	path_reg_base : "HKCU\\Software\\nOsliw Solutions\\Framework\\HUI Library\\"
+}
+
+function mba_load(){
+	document.title = oMBASplash.applicationName
+	oWsh.RegWrite(splash.path_reg_base + "LoadStatus","")
+	oShl.open(oFso.GetAbsolutePathName(".") + "\\mba.hta");
+	setInterval("mba_progress()",100)
+	ID = setTimeout("window.close()",360000) // In case!
+
+	mba_transition_in(oDivImage)
+	mba_transition_in(oDivText)
+}
+
+function mba_position(iWidth,iHeight){
+	try{
+		var iLeft = (window.screen.width-iWidth)/2;
+		var iTop = (window.screen.height-iHeight)/2;
+		moveTo(iLeft,iTop);
+		resizeTo(1,1);
+		resizeTo(iWidth,iHeight);
+		self.focus()
+	}
+	catch(e){}
+}
+
+function mba_transition_in(obj,trans,dur){
+	if(obj.filters){
+		obj.style.display = "none";
+		obj.filters.item(0).stop();
+		obj.filters.item(0).apply();
+		obj.filters.item(0).duration = dur ? dur : 0.3;
+		//obj.filters.item(0).transition = trans ? trans : 23;
+		obj.style.display = "block";
+		obj.filters(0).play(1.000);
+	}
+}
+
+function mba_transition_out(obj){
+	if(obj.filters){
+		obj.filters.item(0).stop();
+		obj.style.display = "none";
+	}
+}
+
+function mba_progress(){
+	try{
+		s = oWsh.RegRead(splash.path_reg_base + "LastLog")
+		oDivProgress.innerHTML = s
+		s = oWsh.RegRead(splash.path_reg_base + "LoadStatus")
+		if(s == "HTA Loaded"){
+			//setTimeout("window.close()",3000)
+			// This is automatically done in _@MBA.rabbit() function
+			clearTimeout(ID)
+			ID = null
+		}
+	}
+	catch(e){}
+}
+
+</script>
+
+</head>
+<body scroll="no" unselectable="on" onload="setTimeout('mba_load()',0)">
+
+<br>
+
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+	<td align="center" valign="middle" background="data/pic/mba_bg_line.gif" width="55%">
+	<div id="oDivText" class="mba-div-filter">nOsliw :: MBA</div>
+	<br><br>
+	<div id="oDivProgress" class="mba-progress" align="left">&nbsp;</div>
+	</td>
+	<td align="center" valign="middle" background="data/pic/mba_bg_line.gif">
+	<div id="oDivImage" class="mba-div-filter">
+	<img src="data/pic/mba_splash.gif" border="0" alt="" width="225" height="185">
+	</div>
+	</td>
+</tr>
+<tr>
+	<td align="center" valign="bottom" height="30" colspan="2"><br>
+	<span class="mba-info">nOsliw Solutions :: Copyright &copy; 2003-2008 :: Module Based HTA Application (MBA)</span>
+	<br><br>&nbsp;</td>
+</tr>
+</table>
+
+</body>
+</html>

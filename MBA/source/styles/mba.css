@@ -1,0 +1,587 @@
+/*
+	Colors: http://msdn.microsoft.com/library/default.asp?url=/workshop/author/dhtml/reference/colors/colors.asp
+	CSS Attributes: http://msdn.microsoft.com/library/default.asp?url=/workshop/author/dhtml/reference/dhtml_reference_entry.asp
+	http://www.thecodeproject.com/html/CSSTrcicks.asp
+	Filer: http://msdn.microsoft.com/library/default.asp?url=/workshop/author/filter/filters_transitions_entry.asp
+*/
+
+A, A:link{
+	color: #336600;
+	text-decoration: none;
+}
+
+A:visited{
+	font-weight: lighter;
+}
+
+A:hover{
+	text-decoration: underline;
+}
+
+A:active{
+	color: #CCCC99;
+	text-decoration: none;
+}
+
+BODY{
+	border: 0;
+	font: normal 11px Arial;
+	margin: 0;
+	padding: 0;
+	scrollbar-3dlight-color: #545454;
+	scrollbar-arrow-color: #FFFFFF;
+	scrollbar-darkshadow-color: #545454;
+	scrollbar-face-color: #545454;
+	scrollbar-shadow-color: #EEEEEE;
+}
+
+FORM {
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+
+OPTGROUP {
+	font-weight: normal;
+}
+
+TD INPUT{
+	background: #EEEEEE;
+	border-color: #545454;
+	border-style: solid;
+	border-width: 1px;
+	color: #000000;
+	font: 11px Arial;
+	margin: 0;
+	padding: 1px 1px 0 1px;
+}
+
+TD SELECT{
+	background: #EEEEEE;
+	border: 1px solid #000000;
+	color: #000000;
+	font: 11px Arial;
+}
+
+TD TEXTAREA{
+	background: transparent;
+	border: 1px solid #000000;
+	font: 11px Arial;
+	overflow: auto;
+}
+
+TD, TH, CAPTION{
+	font: 11px Arial;
+	padding: 0;
+}
+
+FIELDSET{
+	border-color: #808080;
+	border-style: solid;
+	border-width: 1px;
+	font: normal 11px Arial;
+	margin: 0 0 5px 0;
+	padding: 5px;
+	position: relative;
+	width: 100%;
+	height: auto;
+}
+
+LEGEND{
+	color: #336600;
+	font: 10px Tahoma;
+	text-align: left;
+	text-transform: uppercase;
+	text-decoration: overline;
+	margin-bottom: 4px;
+}
+
+.mba-li-circle{
+	border-bottom-style: dashed;
+	border-width: 2px;
+	list-style-type: circle;
+}
+
+.mba-li-square {
+	background: #EEEEEE;
+	color: #000000;
+	list-style-type: square;
+}
+
+.mba-button-1{
+	background: #FFFFFF;
+	margin: 2px;
+	padding: 1px;
+}
+
+.mba-button-2{
+	background: transparent;
+	padding: 0;
+	text-align: center;
+	width: 32px;
+	height: 32px;
+}
+
+.mba-span-collapse{
+	font: normal 12px Marlett;
+	top: 2px;
+	position: relative;
+}
+
+.mba-div-body{
+	display: none;
+	left: 0;
+	margin: 10px 0 0 0;
+	position: relative;
+	top: 0;
+	width: 100%;
+	z-index: 14;
+}
+
+.mba-div-box{
+	border: 1px solid #000000;
+	display: block;
+	height: 100%;
+	overflow: auto;
+	padding: 3px;
+	position: relative;
+	width: 100%;
+}
+
+.mba-fieldset-1{
+	border-color: #808080;
+	border-style: solid;
+	border-width: 8px 1px 1px 1px;
+	font: normal 10px Tahoma;
+	height: auto;
+	left: 0;
+	padding: 5px;
+	position: relative;
+	margin: 0 0 5px 0;
+	top: 0;
+	width: 100%;
+}
+
+.mba-fieldset-2{
+	border-color: #808080;
+	border-style: solid;
+	border-width: 8px 1px 1px 1px;
+	font: normal 10px Tahoma;
+	height: auto;
+	left: 0;
+	padding: 5px;
+	position: relative;
+	margin: 0 0 5px 0;
+	top: 0;
+	background: url(../../data/pic/mba_bg_line.gif) fixed center 50%;
+	width: 85%;
+}
+
+.mba-head-2{
+	background: #DCDCDC;
+	color: #000000;
+	padding: 0 0 0 2px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.mba-head-3{
+	color: #EEEEEE;
+	font: small-caps 11px Arial;
+	text-transform: uppercase;
+}
+
+.mba-head-4,
+TR.mba-head-4 TD{
+	background: #DCDCDC;
+	color: #000000;
+	font: bold 11px Arial;
+	padding: 1px 0 1px 3px;
+	text-transform: lowercase;
+}
+
+.mba-head-5{
+	background: #DCDCDC;
+	color: #545454;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+.mba-div-filter{
+	width:100%;
+	height: auto;
+	display: none;
+	filter:progid:DXImageTransform.Microsoft.Fade(duration=.3);
+}
+
+.mba-input-bb{
+	border-color: #336600; /*border-color: #E9967A;*/
+	border-style: solid;
+	border-width: 2px 1px 1px 1px;
+	color: #336600; /*color: coral;*/
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#CCCC99', EndColorStr='#FFFFFF');
+	/*filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#E9967A', EndColorStr='#FFFFFF');*/
+	font-weight: normal;
+	margin: 2px 2px 2px 0;
+	padding: 0 2px 0 2px;
+	width: 100px;
+}
+
+.mba-input-bbList{
+	border-color: #336600;
+	border-style: solid; /*color: coral;*/
+	border-width: 2px 1px 1px 1px;
+	color: #000000;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#CCCC99', EndColorStr='#FFFFFF');
+	margin: 2px 2px 2px 0;
+}
+
+.mba-input-bg{
+	border-style: solid;
+	border-width: 2px 1px 1px 1px;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#545454', EndColorStr='#FFFFFF');
+	margin: 2px 2px 2px 0;
+	width: 100px;
+	padding: 0 2px 0 2px;
+}
+
+.mba-input-bg2{
+	border-style: solid;
+	border-width: 2px 1px 1px 1px;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#545454', EndColorStr='#FFFFFF');
+	margin: 2px 2px 2px 0;
+	width: 200px;
+	padding: 0 2px 0 2px;
+}
+
+.mba-input-bgList{
+	border-style: solid;
+	border-width: 2px 1px 1px 1px;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#545454', EndColorStr='#FFFFFF');
+	margin: 2px 2px 2px 0;
+}
+
+.mba-input-tg{
+	padding-right: 3px;
+	width: 100px;
+	border-width: 2px 1px 1px 1px;
+	border-color: #545454;
+	border-style: solid;
+	margin: 2px 2px 2px 0;
+	padding: 2px;
+}
+
+.mba-input-bw, .mba-input-tw{
+	background: transparent;
+	border-style: solid;
+	border-width: 1px 1px 1px 1px;
+	font: normal 11px Arial;
+	margin: 0;
+	padding: 0 2px 0 2px;
+	width: 100%;
+}
+
+.mba-input-tt{
+	background: transparent;
+	border-color: #ECE9D8;
+	border-style: inset;
+	border-width: 1px;
+	font: normal 10px Arial;
+	margin: 3px 0 3px 2px;
+	padding: 1px 1px 1px 2px;
+	text-align: center;
+	width: 65px;
+}
+
+
+.mba-input-br{
+	border-color: #E9967A;
+	border-style: solid;
+	border-width: 2px 1px 1px 1px;
+	color: #FF0000;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#E9967A', EndColorStr='#FFFFFF');
+	margin: 2px 2px 2px 0;
+	width: 100px;
+}
+
+.mba-marquee-1{
+	background-color: #CCCC99;
+	border: solid 1px #000000;
+	padding: 4px;
+	position: relative;
+}
+
+.mba-about-1{
+	background-color: #ECE9D8;
+	color: #8A867A;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr="#ECE9D8", EndColorStr="#FFFFFF");
+	font: bold 30px Tahoma;
+	padding: 5px 0 5px 5px;
+}
+
+.mba-about-2{
+	background-color: #CCCC99;
+	color: #336600;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr="#EEEEEE", EndColorStr="#CCCC99");
+	font-weight: bold;
+}
+
+.mba-div-busy-1{
+	background-color:#C1D2EE;
+	color:#316AC5;
+	font:12px Tahoma;
+	padding:2px;
+	text-align: center;
+	border-width: 1px 0 1px 0;
+	border-style: solid;
+	border-color:#316AC5;
+	width: 100%;
+	position:relative;
+	height:50px;
+}
+
+.mba-div-busy-2{
+	font:10px bold Tahoma;
+	height:100%;
+	position:relative;
+	vertical-align:center
+}
+
+.mba-div-sup{
+	background-color: #E4E4E4;
+	color: #808080;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#E4E4E4', EndColorStr='#FFFFFF');
+	font-size: 11px;
+	font-weight: bold;
+	margin: 1px 0 1px 0;
+	padding: 2px 0 5px 2px;
+	position: relative;
+	text-align: left;
+	width: 100%;
+}
+
+.mba-div-sub{
+	display: none;
+	height: auto;
+	margin: 3px 0 3px 0;
+	position: relative;
+	visibility: hidden;
+	width: 100%;
+}
+
+.mba-div-log{
+	position: relative;
+}
+
+.mba-span-arrow{
+	position: relative;
+}
+
+.mba-span-note{
+	color: #336600;
+	font-style: italic;
+	width: 100%;
+}
+
+.mba-span-note2{
+	border-bottom-style: dashed;
+	border-width: 2px;
+	color: #336600;
+	width: 100%;
+}
+
+.mba-input-radio,
+.mba-input-checkbox{
+	background-color: transparent;
+	border-width: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.mba-span-smal{
+	font-size: 10px;
+}
+
+.mba-span-space{
+	white-space: pre;
+}
+
+.mba-span-space10{
+	padding-left: 10px;
+}
+
+.mba-span-space18{
+	padding-left: 18px;
+}
+
+.mba-span-space20{
+	padding-left: 20px;
+}
+
+.mba-table-1{
+	border: 1px solid #000000;
+	margin: 0 5px 0 5px;
+	position: relative;
+}
+
+.mba-table-1 TD{
+	border-color: #000000;
+	border-style: solid;
+	border-width: 0 1px 1px 1px;
+	padding: 2px;
+}
+
+.mba-table-1 TH{
+	background: #DCDCDC;
+	padding: 2px;
+	text-align: center;
+}
+
+.mba-table-1 TR {
+	vertical-align: top;
+}
+
+.mba-table-1TD{
+	background: url(../../data/pic/mba_bg_line.gif) repeat fixed center;
+	font: normal 11px Tahoma;
+}
+
+.mba-table-1TROut{
+	background: none;
+}
+
+.mba-table-1TROver, .mba-pic-line {
+	background: url(../../data/pic/mba_bg_line.gif) repeat fixed center;
+}
+
+.mba-table-2 TH{
+	background: #DCDCDC;
+	font-style: italic;
+	padding: 2px;
+	text-align: left;
+}
+
+.mba-table-3{
+	border: 1px solid #C0C0C0;
+	margin: 2px 0 2px 0;
+}
+
+.mba-title-1{
+	background-color: #C0C0C0;
+	color: #F0FFFF;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#545454', EndColorStr='#FFFFFF');
+	font: small-caps bold 13px Tahoma;
+	height: 20px;
+	padding: 3px 0 3px 0;
+	text-align: center;
+	width: 100%;
+}
+
+.mba-title-1Foot{
+	background-color: #C0C0C0;
+	color: #F0FFFF;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#FFFFFF', EndColorStr='#545454');
+	font: small-caps bold 13px Tahoma;
+	height: 20px;
+	padding: 3px 0 3px 0;
+	text-align: center;
+	width: 100%;
+}
+
+.mba-title-2, .mba-title-3{
+	background-color: #545454;
+	color: #C0C0C0;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#545454', EndColorStr='#FFFFFF');
+	font: bold 13px Tahoma;
+	padding: 2px;
+	text-align: left;
+	width: 100%;
+}
+
+.mba-title-2Text{
+	color: #C0C0C0;
+	font: bold 13px Tahoma;
+	padding: 2px;
+	text-align: left;
+}
+
+.mba-title-Info{
+	background: url(../../data/pic/mba_bg_square.gif) repeat fixed center;
+	color: #FF7F50;
+	font: normal 11px tahoma;
+	padding: 5px 0 5px 0;
+}
+
+.mba-td-1{
+	background-color: transparent;
+	font: normal 10px Tahoma;
+	padding: 2px;
+}
+
+#oDivBody{
+	position: relative;
+	top: 0;
+	width: 100%;
+	display: block;
+	left: 0;
+	height: auto;
+	overflow: auto;
+	padding: 0 3px 0 3px;	
+}
+
+#oDivListBarHead, #oDivListBarFoot, #oDivList1, #oDivList2{
+	position: relative;	
+	left: 0;
+	width: 100%;
+	display: none;
+	margin: 3px 0 0 0;
+	position: relative;
+	top: 0;	
+	z-index: 14;
+}
+
+#oDivLog, #oDivAction{
+	position: relative;
+	top: 0;	
+	left: 0;
+	width: 100%;
+	display: block;	
+	margin: 14px 0 0 0;	
+	z-index: 14;
+}
+
+#oDivLogError{
+	position:relative;
+	display: none;
+	width: 100%;
+	height: 60px;
+	overflow: auto;	
+}
+
+#oDivLogLog{
+	position:relative;
+	display: none;
+	width: 100%;
+	height: 120px;
+	overflow: auto;	
+}
+
+#oDivMenu{
+	margin: 0 0 10px 0;
+}
+
+#oDivMenu, #oDivHead, #oDivFoot{
+	position:relative;
+	display: block;
+	top: 0;	
+	left: 0;
+}
+
+#oDivMenuBarHead, #oDivMenuBarFoot{
+	position:relative;
+	display: block;
+	width: 100%;
+	height: auto;
+	z-index: 14;
+}
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+
+<mba_module>
+	<module_revision version="1.0" createdBy="Woodworth Wilson" createDate="2007-09-05" updatedBy="Woodworth Wilson" updateDate="" />
+	<module_information name="Platform" vendor="nOsliw Solutions" title="nOsliw Solutions :: Platform" shortname="platform" />
+	<module_config>
+		<config category="module" type="path" name="PathDB" value="data\db"/>
+		<config category="module" type="path" name="PathBin" value="data\bin"/>
+		<config category="module" type="path" name="PathPic" value="data\pic"/>
+		<config category="module" type="path" name="PathDoc" value="data\doc"/>
+		<config category="module" type="path" name="PathScript" value="scripts"/>
+		<config category="module" type="path" name="PathStyle" value="scripts"/>
+	
+		<config category="module" type="file" name="FileHTML" value="mba-platform-html.htm"/>
+		<config category="module" type="file" name="FileDocs" value="mba-platform-docs.ini"/>
+		<config category="module" type="file" name="FileDB" value="data\db\mba-platform-unknown.mdb"/>
+	
+		<config category="module" type="function" name="f_init" value="platform_init"/>
+		<config category="module" type="function" name="f_menubar" value="platform_menu"/>
+		<config category="module" type="function" name="f_navigate" value="platform_navigate"/>
+		<config category="module" type="function" name="f_forminit" value="platform_forminit"/>
+		<config category="module" type="function" name="f_formbehavior" value="platform_formbehavior"/>
+		<config category="module" type="function" name="f_formactivate" value="platform_formactivate"/>		
+		<config category="module" type="function" name="f_formvalidate" value="platform_formvalidate"/>
+		<config category="module" type="function" name="f_main" value="platform_main"/>
+		<config category="module" type="function" name="f_event" value="platform_event"/>
+	</module_config>	
+</mba_module>

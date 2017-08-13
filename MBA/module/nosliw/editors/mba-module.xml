@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+
+<mba_module>
+	<module_revision version="1.0" createdBy="Woodworth Wilson" createDate="2007-08-30" updatedBy="Woodworth Wilson" updateDate="" />
+	<module_information name="Editors" vendor="nOsliw Solutions" title="nOsliw Solutions :: Editors" shortname="editors" />
+	<module_config>
+		<config category="module" type="path" name="PathDB" value="data\db"/>
+		<config category="module" type="path" name="PathBin" value="data\bin"/>
+		<config category="module" type="path" name="PathPic" value="data\pic"/>
+		<config category="module" type="path" name="PathDoc" value="data\doc"/>
+		<config category="module" type="path" name="PathScript" value="scripts"/>
+		<config category="module" type="path" name="PathStyle" value="scripts"/>
+		
+		<config category="module" type="file" name="FileHTML" value="mba-editors-html.htm"/>
+		<config category="module" type="file" name="FileDocs" value="mba-editors-docs.ini"/>
+		<config category="module" type="file" name="FileDB" value="data\db\mba-editors-unknown.mdb"/>
+	
+		<config category="module" type="function" name="f_init" value="editors_init"/>
+		<config category="module" type="function" name="f_menubar" value="editors_menu"/>
+		<config category="module" type="function" name="f_navigate" value="editors_navigate"/>
+		<config category="module" type="function" name="f_forminit" value="editors_forminit"/>
+		<config category="module" type="function" name="f_formbehavior" value="editors_formbehavior"/>
+		<config category="module" type="function" name="f_formactivate" value="editors_formactivate"/>		
+		<config category="module" type="function" name="f_formvalidate" value="editors_formvalidate"/>
+		<config category="module" type="function" name="f_main" value="editors_main"/>
+		<config category="module" type="function" name="f_event" value="editors_event"/>
+	</module_config>
+</mba_module>

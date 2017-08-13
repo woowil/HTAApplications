@@ -1,1 +1,179 @@
-This is a planned Release
+
+<DIV id="oDivLDIFDE">
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="3">
+<form name="oFormLDIFDE">
+<tr>
+	<td width="15">&nbsp;</td>
+    <td class="mba-pic-line" nowrap>
+	
+	<fieldset>
+   	<legend>Info</legend>
+	
+	1) Terminate execution if the server takes longer than the specified number of seconds to respond to an operation default = no timeout<br>
+	2) This list is populated by selecting a class from the objectClass list above<br>
+	3) This list is populated by selecting a class from the objectClass list above<br>
+	4) Defaults to "(objectClass=*)") Leave unchecked to accept default search filter<br>
+	</div>
+	</fieldset>
+	
+    </td>
+	<td width="15">&nbsp;</td>
+</tr>
+<tr><td colspan="3">&nbsp;</td></tr>
+<tr>
+	<td width="15">&nbsp;</td>
+	<td valign="top">		
+		
+		<div id="oDivLDIFDE2Sup" class="mba-div-sup">Action</div>
+		<div id="oDivLDIFDE2Sub" class="mba-div-sub">		
+				
+		<fieldset>
+		<legend>Parameters</legend>
+		
+		<table width="100%" border="0">
+	    <tr> 
+	      <td colspan="2"><input type="checkbox" name="importmode" value=" -i">Turn on Import Mode (The default is Export)</td>
+	    </tr>
+	    <tr> 
+	      <td width="40%"><input type="checkbox" name="filename" value=" -f">Input or Output filename</td>
+	      <td><input name="path" type="text" style="width:100%"></td>
+	    </tr>
+	    <tr> 
+	      <td><input name="servername" type="checkbox" value=" -s">The server to bind to (Default to current logon server)</td>
+	      <td><input name="servernameinput" type="text" size="15"></td>
+	    </tr>
+	    <tr> 
+	      <td><input name="replacedn" type="checkbox" value=" -c">Replace occurences of FromDN to ToDN</td>
+	      <td><input name="replacedninput" type="text" style="width:100%"></td>
+	    </tr>
+	    <tr> 
+	      <td colspan="2"><input name="verbose" type="checkbox" value=" -v">Turn on Verbose Mode</td>
+	    </tr>
+	    <tr> 
+	      <td><input name="logfile" type="checkbox" value=" -j">Log File Location</td>
+	      <td><input name="logfileinput" type="text" style="width:100%"></td>
+	    </tr>
+	    <tr> 
+	      <td><input name="port" type="checkbox" value=" -t">Port Number (default = 389)</td>
+	      <td><input name="portinput" type="text" size="15"></td>
+	    </tr>
+	    <tr> 
+	      <td colspan="2"><input name="unicode" type="checkbox" value=" -u">Use Unicode format</td>
+	    </tr>
+	    <tr> 
+	      <td><input name="timeout" type="checkbox" value=" -w">Terminate execution 1)</td>
+	      <td><input name="timeoutinput" type="text" size="15"></td>
+	    </tr>
+	    <tr> 
+	      <td colspan="2"><input name="sasl" type="checkbox" value=" -h">Enable SASL layer encryption</td>
+	    </tr>
+	  </table>
+		
+		</fieldset><br>
+		
+		<fieldset>
+		<legend>Export</legend>
+		
+		<table width="100%" border="0">
+		<tr> 
+		  <td width="40%"><input name="rootdn" type="checkbox" value=" -d">The root of the LDAP search (Default to Naming Context)</td>
+		  <td> <input name="rootdninput" type="text" value="RootDN" style="width:100%"></td>
+		</tr>
+		<tr> 
+		  <td colspan="2"><input name="filter" type="checkbox" value=" -r">LDAP search filter 4)</td>
+		</tr>
+		<tr> 
+		  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="objectclass" type="checkbox">objectClass</td>
+		  <td><span id="objClassList">&nbsp;</span></td>
+		</tr>
+		<tr> 
+		  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="objectcategory" type="checkbox">objectCategory</td>
+		  <td><span id="objCategoryList"></span></td>
+		</tr>
+		<tr> 
+		  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="attribute" type="checkbox">Attribute Filter</td>
+		  <td><span id="objAttributeList"></span><input name="attributename" type="text" style="width:100%"></td>
+		</tr>
+		<tr> 
+		  <td><input name="searchscopechk" type="checkbox" value=" -p">Search Scope</td>
+		  <td>
+			  <label><input type="radio" name="searchscope" value="Base">Base</label>&nbsp;&nbsp;
+			  <label><input type="radio" name="searchscope" value="OneLevel">OneLevel</label>&nbsp;&nbsp;
+			  <label><input type="radio" name="searchscope" value="SubTree">Subtree</label>
+			</td>
+		</tr>
+		<tr> 
+		  <td><input name="listinclude" type="checkbox" value=" -l">LDAP Search attributes (comma separated) 2)</td>
+		  <td><span id="listincludeinput"></span></td>
+		</tr>
+		<tr> 
+		  <td><input name="listomit" type="checkbox" value=" -o">List of attributes (comma separated) to omit from input 3)</td>
+		  <td><span id="listomitinput"></span></td>
+		</tr>
+		<tr> 
+		  <td colspan="2"><input name="paged" type="checkbox" value=" -g">Disable Paged Search</td>
+		</tr>
+		<tr> 
+		  <td colspan="2"><input name="samlogic" type="checkbox" value=" -m">Enable the SAM logic on export</td>
+		</tr>
+		<tr> 
+		  <td colspan="2"><input name="binaryexport" type="checkbox" value=" -n">Do not export binary values</td>
+		</tr>
+	  </table>
+				
+		</fieldset>
+		
+		<fieldset>
+		<legend>Import</legend>
+		
+		<table width="100%" border="0">
+	    <tr> 
+	      <td colspan="2"><input name="ignoreerrors" type="checkbox" value=" -k">The import will go on ignoring 'Constraint Violation' and 'Object Already Exists' errors</td>
+	    </tr>
+	    <tr> 
+	      <td colspan="2"><input name="lazycommit" type="checkbox" value=" -e">The import will not use lazy commit (enabled by default)</td>
+	    </tr>
+	    <tr> 
+	      <td width="40%"><input name="thread" type="checkbox" value=" -q">The import will use the specified number of threads (default is 1)</td>
+	      <td><input name="threadinput" type="text" size="15"></td>
+	    </tr>
+	  </table>
+		
+		</fieldset>
+		
+		<fieldset>
+		<legend>Credentials</legend>
+		
+		<table width="100%" border="0">
+		  <tr>
+		      <td width="40%"><input name="simple" type="checkbox"> Simple Authentication</td>
+		      <td><span id="objUserDN"></span> &nbsp; <input name="userdnpassword" type="password" size="15"> Password</td>
+		  </tr>
+		  <tr>
+		    <td><input name="sspi" type="checkbox"> SSPI Bind Method</td>
+		    <td><span id="objNetDom"></span> &nbsp; <input name="usernamepass" type="password" size="15"> Password</td>
+		  </tr>
+		</table>
+
+		</fieldset>
+		
+		<fieldset>
+		<legend>Credentials Establishment</legend>
+		
+		<table width="100%" border="0">
+		<tr><td>
+		Note that if no credentials is specified, LDIFDE will bind as the currently logged on user, using SSPI<br>
+		<textarea name="CopytoClip" rows="5" style="width:100%"></textarea><br>
+			<span id="copied"></span>
+		</td></tr>
+		</table>
+
+		</fieldset>
+
+		</div>
+	</td>
+	<td width="15">&nbsp;</td>
+</tr>
+</form>
+</table>
+</DIV>

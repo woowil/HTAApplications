@@ -1,0 +1,7 @@
+
+
+I choose Privelege (this... = function(){..) OOP because
+* unlike namespace, am able to create serveral instances (new ...)
+* am able to have private variables and function
+* Need to track/trace down the constructor name on Error
+

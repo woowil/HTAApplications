@@ -1,1 +1,384 @@
-This is a planned Release
+<DIV id="oDivManagementProcess">
+<form name="oFormManagementProcess">
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="3">
+<tr>
+	<td width="15" rowspan="3">&nbsp;</td>
+    <td class="mba-pic-line" colspan="2" valign="middle" align="center">
+    
+	<table width="100%" align="center" border="0" cellspacing="5" cellpadding="3">
+	<tr valign="top">
+		<td width="30%">
+		<fieldset>
+		<legend>Connection</legend>
+	    <input type="text" name="server" size="9" maxlength="30" class="mba-input-tg"> Computer<br>
+		<input type="text" name="username" size="9" maxlength="30" class="mba-input-tg"> Username (<i>NULL if omitted</i>)<br>
+		<input type="password" name="password" size="9" maxlength="30" class="mba-input-tg"> Password (<i>NULL if omitted</i>)<br>
+		<input type="button" name="process_connect" value=":: Connect" class="mba-input-bb" style="margin-bottom:16px">
+		</fieldset>
+		</td>
+		<td>
+		<fieldset>
+		<legend>Process</legend>
+	    <input name="process_filter" type="text" maxlength="25" class="mba-input-tg" value="Win32_Perf" style="width:300px"> &nbsp; 
+		<input type="button" name="process_filter_action" class="mba-input-bg" value="Filter"><br>
+		<select name="process_classes" style="width:100%"></select>
+		</fieldset><br>
+		
+		<fieldset style="height:100%">
+		<legend>Options</legend>
+	    <input name="process_interval_stop" type="checkbox">Interval Activation<br>
+		<span class="mba-span-space20"></span> Interval Seconds <select name="process_interval">
+		<option value="3000">03 sec
+		<option value="5000" selected>05 sec
+		<option value="8000">08 sec
+		<option value="10000">10 sec
+		<option value="20000">20 sec
+		<option value="30000">30 sec
+		<option value="60000">60 sec
+		</select><br>
+		</fieldset>
+		</td>
+	</tr>
+	</table><br>
+	
+    </td>
+	<td width="15" rowspan="3">&nbsp;</td>
+</tr>
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr>
+	<td align="center" colspan="2">
+    <div id="oDivManagementProcess1Sup" class="mba-div-sup">Results</div>
+    <div id="oDivManagementProcess1Sub" class="mba-div-sub">
+    
+	<table width="98%" border="0" cellspacing="0" cellpadding="0" class="mba-table-1">
+    <caption align="center" id="oCapManagementProcess"><i>Process Monitor on </i></caption>
+	<thead><tr class="mba-head-2"><th>&nbsp;</th><th>Process</th><th>Type</th><th>Current</th><th>Average</th><th>Maximum</th><th>Minimum</th><th>&nbsp;</th></tr></thead>
+	<tfoot><tr class="mba-head-2"><th>&nbsp;</th><th>Process</th><th>Type</th><th>Current</th><th>Average</th><th>Maximum</th><th>Minimum</th><th>&nbsp;</th></tr></tfoot>
+	<tbody id="oBdyManagementProcess"></tbody>
+	</table>
+    
+	</div>
+    </td>
+	<td width="15">&nbsp;</td>
+</tr>
+</table>
+</form>
+</DIV>
+
+
+
+<DIV id="oDivManagementWmi">
+<form name="oFormManagementWmi">
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="3">
+<tr>
+	<td width="15">&nbsp;</td>
+    <td colspan="2" class="mba-pic-line" nowrap>
+	<fieldset>
+   	<legend>Sources</legend>
+	<div align="center" style="margin-top:3px;"><a href="http://msdn2.microsoft.com/en-us/library/Aa286547.aspx" target="_HTALinks">Microsoft MSDN Windows Management Instrumentation (WMI) Library</a><br>
+	1. &nbsp; <select name="wmi_namespace" style="width:80%"><option></select><br>
+	2. &nbsp; <select name="wmi_classes" style="width:80%"><option></select><br><br>
+	
+	<input name="query" type="text" value="" style="width:60%" maxlength="250">
+	
+	</div>
+	</fieldset>
+    </td>
+	<td width="15">&nbsp;</td>
+</tr>
+
+<tr><td colspan="4">&nbsp;</td></tr>
+<tr>
+	<td width="15">&nbsp;</td>
+	<td colspan="2" align="center">
+	<br/>	
+	<div id="oDivManagementWmiPanel" class="hui-panel-frame">
+	
+	<div class="hui-panel-panes">
+	
+	<div class="hui-panel-pane" title="Configuration">
+	<table width="100%" border="0" cellspacing="5" cellpadding="0">
+	<tr valign="top">
+		<td>
+			<fieldset>
+			<legend> Classes </legend>
+			<input name="wmi_opt_win32" type="checkbox" checked> Enumerate WIN32 classes (<i>must change namespace</i>)<br>
+			<input name="wmi_opt_cim" type="checkbox" checked> Enumerate CIM classes (<i>must change namespace</i>)<br>
+			<input name="wmi_opt_system" type="checkbox"> Enumerate SYSTEM classes (<i>must change namespace</i>)
+			</fieldset>
+			<fieldset style="height:133px">
+			<legend> Operation </legend>
+			<input name="wmi_opt_getdescription" type="checkbox"> Show detalied class description<br>
+			<input name="wmi_opt_getmethods" type="checkbox"> Invoke <b>Get Methods</b> after operaion<br>
+			<input name="wmi_opt_setreset" type="checkbox"> Reset wmi service connections when possible (<i>not reconmended</i>)
+			</fieldset>
+		</td>
+		<td width="40%">
+			<fieldset>
+			<legend> Connection </legend>	
+			<input name="server" type="text" value="" size="8" maxlength="15" class="mba-input-tg"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Computer (WMI Enabled)<br>
+			<select name="privilege" style="width:120px">
+	    		<option value="0">(00) None
+	    		<option value="7">(07) Security
+	    		<option value="18">(18) Local Shutdown
+	    		<option value="23">(23) Remote Shutdown
+	    		<option value="26">(26) Delegation
+	    		<option value="-1" selected> (-1) Enable All
+	    	</select> &nbsp;&nbsp;Privilege (<i>Enable All over rules all settings</i>)<br>
+			<select name="securityflags" style="width:120px">
+	    		<option value="30">030 Seconds
+	    		<option value="60">060 Seconds
+	    		<option value="128" selected>128 Seconds
+	    		<option value="0"> Indefinitely
+			</select> &nbsp;&nbsp;Security Flags<br>
+			</fieldset>
+			<fieldset name="oFieldWmiCon">
+			<legend> Credential </legend>
+			(<i>Empty fields or local connections are interpreted as NUL</i><br>
+			<input name="username" type="text" value="" size="8" maxlength="30" class="mba-input-tg"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Username<br>
+			<input name="password" type="password" value="" size="8" maxlength="30" class="mba-input-tg"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Password<br>
+			<select name="authority" style="width:120px" disabled>
+			<option value="ntlmdomain:domainname" selected>NTLM Domain<option value="kerberos:domainname\servername">Kerberos
+			</select> &nbsp;&nbsp;Authority
+			</fieldset>
+			<fieldset name="oFieldWmiCon">
+			<legend> Level </legend>
+			<select name="locale" style="width:120px">
+				<option value="MS_409" selected>(EN) ms_409 USA
+	    		<option value="MS_809">(EN) ms_809 UK
+	    		<option value="MS_41D">(SE) ms_41D Sweden
+	    		<option value="MS_414">(NO) ms_414 Bokmål
+	    		<option value="MS_814">(NO) ms_814 Nynorsk
+	    		<option value="MS_40C">(FR) ms_40C France
+	    		<option value="MS_407">(DE) ms_407 Germany
+	    		<option value="MS_C0A">(ES) ms_C0A Spain
+			</select> &nbsp;&nbsp;Locale<br>
+			<select name="impersonation" style="width:120px">
+				<option value="1">(1) Anonymous
+				<option value="2">(2) Identity
+				<option value="3" selected>(3) Impersonate
+				<option value="4">(4) Delegate
+			</select> &nbsp;&nbsp;Impersonation Level <a href="http://msdn2.microsoft.com/en-gb/library/aa393981.aspx" target="_HTALinks">?</a><br>
+			<select name="authentication" style="width:120px">
+				<option value="0">(0) Default
+				<option value="1">(1) None
+				<option value="2">(2) Connection
+				<option value="3">(3) Call
+				<option value="4">(4) Packet
+				<option value="5">(5) Packet Integrity
+				<option value="6" selected>(6) Packet Privacy
+			</select> &nbsp;&nbsp;Authentication Level <a href="http://msdn2.microsoft.com/en-us/library/aa393972.aspx" target="_HTALinks">?</a>
+			</fieldset>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><br>&nbsp; <input type="button" name="wmi_ope_action" value=":: Connect" class="mba-input-bb"> &nbsp; <input name="clear" type="button" value="Reset" class="mba-input-bg">
+	</tr>
+	</table>
+	</div>
+	
+	<div class="hui-panel-pane" title="Programming">
+	<table width="98%" border="0" cellspacing="5" cellpadding="5">
+	<tr valign="top">
+		<td colspan="2">	
+		<fieldset>
+		<legend>Language</legend>		
+		<select name="wmi_scr_language">
+		<option value="jscript" selected extension="js" command="cscript //nologo"> :: JScript (JS,JSE)
+		<option value="vbscript" extension="vbs" command="cscript //nologo"> :: VBScript (VBS,VBE)
+		<option value="wsh" extension="wsf" command="cscript //nologo"> :: WSH (WSF)
+		<option value="asp_js" extension="asp" command=""> :: ASP with JScript (ASP)
+		<option value="asp_vbs"  extension="asp" command=""> :: ASP with VBScript (ASP)
+		<option value="perlscript"  extension="pl" command="perl"> :: Perl (PL)
+		<option value="kixstart" extension="kix" command=""> :: Kixstart (KIX)
+		<option value="python" extension="py" command=""> :: Python (PY)
+		<option value="wmic"  extension="" command=""> :: WMI Commander (CMD)
+		<option value="rexx" extension="rex" command="rexx"> :: Object Rexx (REX)
+		<option value="cplus" disabled> :: C++ (CPP)
+		<option value="csharp" disabled> :: C# (Sharp) (CS)
+		<option value="js_net" disabled> :: JScript.NET (JS)
+		<option value="vb_net" disabled> :: VB.NET (VB)
+		<option value="ps" extension="ps" command="powershell"> :: PowerShell (PS)
+		</select>
+		
+		<span class="mba-span-space20"></span>
+		<input type="button" name="wmi_scr_copy" value="Copy" class="mba-input-bg" title="Copy to clipboard"> &nbsp; 
+		<input type="button" name="wmi_scr_run" value="Run" class="mba-input-bg" title="Run in DOS">
+		</fieldset><br>
+		<fieldset>
+		<legend>Code</legend>
+		<textarea id="oTextareaWmiScr" name="wmi_scr_code" style="width:100%;border:none;" ROWS="25" COLS="60" wrap="off"></textarea>
+		</fieldset>
+		</td>
+	</tr>
+	</table>
+	</div>
+	
+	
+	<div class="hui-panel-pane" title="Methods">
+	<table width="98%" border="0" cellspacing="0" cellpadding="0" class="mba-table-1">
+	<caption align="center" id="oCapManagementWmiMet"><i>Methods for </i></caption>
+	<thead>
+	<tr>
+		<td colspan="6">
+		<input type="button" name="wmi_clear_met" value="Clear" class="mba-input-bg"> &nbsp; 
+		<input type="button" name="wmi_saveas_met" value="SaveAs.." class="mba-input-bg"> &nbsp; 
+		<input type="button" name="wmi_print_met" value="Print.." class="mba-input-bg">
+		</td>
+	</tr>
+	<tr class="mba-head-2"><th>&nbsp;</th><th>Method</th><th>Parameters</th><th>Qualifires</th><th>Description</th><th>&nbsp;</th></tr></thead>
+	<tbody id="oBdyManagementWmiMet"></tbody>	
+	<tfoot><tr class="mba-head-2"><th>&nbsp;</th><th>Method</th><th>Parameters</th><th>Qualifires</th><th>Description</th><th>&nbsp;</th></tr></tfoot>	
+	</table>
+	</div>
+	
+	<div class="hui-panel-pane" title="Properties">
+	<table width="98%" border="0" cellspacing="0" cellpadding="0" class="mba-table-1">
+	<caption align="center" id="oCapManagementWmiPro"><i>Properties for </i></caption>
+	<thead>
+	<tr>
+		<td colspan="5">
+		<input type="button" name="wmi_clear_pro" value="Clear" class="mba-input-bg"> &nbsp; 
+		<input type="button" name="wmi_saveas_pro" value="SaveAs.." class="mba-input-bg"> &nbsp; 
+		<input type="button" name="wmi_print_pro" value="Print.." class="mba-input-bg">
+		</td>
+	</tr>
+	<tr class="mba-head-2"><th>&nbsp;</th><th>Property</th><th>Value</th><th>Description</th><th>&nbsp;</th></tr></thead>
+	<tfoot><tr class="mba-head-2"><th>&nbsp;</th><th>Property</th><th>Value</th><th>Description</th><th>&nbsp;</th></tr></tfoot>
+	<tbody id="oBdyManagementWmiPro"></tbody>	
+	</table>
+	</div>
+
+	</div>
+	</div>
+	</td>
+	<td width="15">&nbsp;</td>
+</tr>
+<tr><td colspan="4">&nbsp;</td></tr>
+</table>
+</form>
+</DIV>
+
+<DIV id="oDivManagementFile" style="height:100%">
+<form name="oFormManagementFile">
+<table align="center" width="100%" height="100%" border="0" cellspacing="0" cellpadding="3">
+<tr>
+	<td width="15">&nbsp;</td>
+	<td colspan="3">
+	<div id="oDivManagementFile_0Sup" class="mba-div-sup">Common</div>
+	<div id="oDivManagementFile_0Sub" class="mba-div-sub">
+	
+	<fieldset>
+	
+	<table align="center" width="100%" border="0" cellspacing="3" cellpadding="1">
+	<tr valign="top">
+		<td nowrap><b>Information</b><br>
+		<li> File and Folders with <b style="color:orange">orange</b> color are system files and cannot be changed
+		<li> File and Folders with <b style="color:blue">orange</b> color are compressed
+		<li> File and Folders with <b style="color:red">red</b> color are inaccessable (access denied)
+		<li> Use <b>Ctrl+Left click</b> to mark or unmark one or more files
+		<li> Files can be renamed directly but system files are unchangeable
+		<li> Double click the icons (on the left in the cell) to open folder and file
+		</td>
+		<td width="5">&nbsp;</td>
+		<td nowrap><b>File and Folder Options</b><br>
+		<input name="show_system" type="checkbox" checked disabled> Show system files and folders with orange color<br>
+		<input name="show_compress" type="checkbox" checked disabled> Show compressed files and folders with blue color<br>
+		<input name="show_inaccessable" type="checkbox"> Show inaccessable files and folders with red color <i>(this slows down listings)</i><br>
+		<input name="show_foldersize" type="checkbox"> Show folder size <i>(this slows down listings)</i><br>
+		<input name="show_attributes" type="checkbox"> Show file and folder attributes <i>(H=Hidden, S=System, R=Readonly, A=Archive)</i><br>
+		
+		<input name="use_robocopy" type="checkbox"> Use <b>robobopy.exe</b> when copying and moving<br>
+		<span class="mba-span-space20"></span> <input name="opt_robocopy" type="file" size="50"> (File)<br>
+		<span class="mba-span-space20"></span> <input name="opt_robocopy_copy" type="text" size="50" value="/ETA /E /XO /XF *.tmp /R:1 /W:2 /Log:%temp%\robolog.log"> (Copy)<br>
+		<span class="mba-span-space20"></span> <input name="opt_robocopy_copy" type="text" size="50" value="/ETA /E /MIR /MOVE /XF *.tmp /R:1 /W:2 /Log:%temp%\robolog.log"> (Move)<br>
+		</td>
+		<td width="5">&nbsp;</td>
+		<td nowrap><b>HTTP and FTP Options</b><br>
+		
+		</td>
+		<td width="50%">&nbsp;</td>
+	</tr>
+	</table>
+	</fieldset>
+		
+	</div>	
+	</td>
+	<td width="15">&nbsp;</td>
+</tr>
+<tr>
+	<td width="15">&nbsp;</td>
+	<td valign="top" width="50%" height="100%">
+		
+		<div id="oDivManagementFile_1Sup" class="mba-div-sup">Pane 0</div>
+		<div id="oDivManagementFile_1Sub" class="mba-div-sub">
+		
+		<fieldset style="text-align:center;" index="0">
+		<legend><select name="list"></select>&nbsp;&nbsp;<input type="button" name="browse" value="Browse.." class="mba-input-bg"> </legend>
+		
+		<input type="button" name="copy" value="Copy" class="mba-input-bg"> &nbsp; 
+		<input type="button" name="move" value="Move" class="mba-input-bg"> &nbsp; 
+		<input type="button" name="remove" value="Remove" class="mba-input-br"> &nbsp;&nbsp; 
+		<input type="button" name="makedir" value="MakeDir" class="mba-input-bg"> &nbsp; 
+		<input type="button" name="makefile" value="MakeFile" class="mba-input-bg"> &nbsp;&nbsp; 
+		<input type="button" name="refresh" value="Refresh" class="mba-input-bg">
+		
+		</fieldset>
+		
+		<br>
+		
+		<table align="center" width="100%" border="0" cellspacing="1" cellpadding="1" id="oTableFileMan">
+		<caption align="center"></caption>
+		<thead>
+		<tr><th>Name</th><th>Size</th><th>Type</th><th>Date Modified</th><th>Short Name</th></tr>
+		</thead>
+		<tbody id="oTbyManagementFile" index="0">
+		</tbody>
+		<tfoot>
+		<tr><th>Name</th><th>Size</th><th>Type</th><th>Date Modified</th><th>Short Name</th></tr>
+		</tfoot>
+		</table>
+		
+		</div>
+	</td>
+	<td width="20" bgcolor="#EEEEEE">&nbsp;</td>
+	<td valign="top" width="50%" height="100%">
+		
+		<div id="oDivManagementFile_2Sup" class="mba-div-sup">Pane 1</div>
+		<div id="oDivManagementFile_2Sub" class="mba-div-sub">
+		
+		<fieldset style="text-align:center;" index="1">
+		<legend><select name="list"></select>&nbsp;&nbsp;<input type="button" name="browse" value="Browse.." class="mba-input-bg"> </legend>
+		
+		<input type="button" name="copy" value="Copy" class="mba-input-bg"> &nbsp; 
+		<input type="button" name="move" value="Move" class="mba-input-bg"> &nbsp; 
+		<input type="button" name="remove" value="Remove" class="mba-input-br"> &nbsp;&nbsp; 
+		<input type="button" name="makedir" value="MakeDir" class="mba-input-bg"> &nbsp; 
+		<input type="button" name="makefile" value="MakeFile" class="mba-input-bg"> &nbsp;&nbsp; 
+		<input type="button" name="refresh" value="Refresh" class="mba-input-bg">		
+		
+		</fieldset>
+		
+		<br>
+		
+		<table align="center" width="100%" border="0" cellspacing="1" cellpadding="1" id="oTableFileMan">
+		<caption align="center"></caption>
+		<thead>
+		<tr><th>Name</th><th>Size</th><th>Type</th><th>Date Modified</th><th>Short Name</th></tr>
+		</thead>
+		<tbody id="oTbyManagementFile" index="1">
+		</tbody>
+		<tfoot>
+		<tr><th>Name</th><th>Size</th><th>Type</th><th>Date Modified</th><th>Short Name</th></tr>
+		</tfoot>
+		</table>
+		
+		</div>
+	</td>
+	<td width="15">&nbsp;</td>
+</tr>
+</table>
+</form>
+</DIV>
+

@@ -1,0 +1,12 @@
+
+* HTA won't evaluate prototypes if the prototype is defined in a <script> tag or embeded in the <script src=...>
+  This bug includes all existing javascript classes (String, Object, Function etc)
+
+  Solution: Dynamically append the prototypes using the script DOM object
+	    o = document.createElement() 
+            document.getElementByTagName('head')[0].appendChild(document)
+
+* WScript is not supported
+* Prototypes is not supported in DOM objects 
+* Flashin on startu
+

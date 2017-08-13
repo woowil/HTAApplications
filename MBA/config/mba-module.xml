@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+
+<mba_module>
+	<module_revision version="1.0" createdBy="" createDate="2007-09-06" updatedBy="" updateDate="" />
+	<module_information name="Unknown" vendor="nOsliw Solutions" title="nOsliw Solutions :: Unknown" shortname="unknown" />
+	<module_config>
+		<config category="module" type="path" name="PathDB" value="data\db"/>
+		<config category="module" type="path" name="PathBin" value="data\bin"/>
+		<config category="module" type="path" name="PathPic" value="data\pic"/>
+		<config category="module" type="path" name="PathDoc" value="data\doc"/>
+		<config category="module" type="path" name="PathScript" value="scripts"/>
+		<config category="module" type="path" name="PathStyle" value="scripts"/>
+		
+		<config category="module" type="file" name="FileHTML" value="hui-unknown-html.htm"/>
+		<config category="module" type="file" name="FileDocs" value="hui-unknown-docs.ini"/>
+		<config category="module" type="file" name="FileDB" value="data\db\hui-unknown-unknown.mdb"/>
+				
+		<config category="module" name="init" value="unknown_init"/>
+		<config category="module" name="menubar" value="unknown_menu"/>
+		<config category="module" name="navigate" value="unknown_navigate"/>
+		<config category="module" name="forminit" value="unknown_form"/>
+		<config category="module" name="formbehavior" value="unknown_formbehavior"/>
+		<config category="module" name="formactivate" value="unknown_formactivate"/>		
+		<config category="module" name="formvalidate" value="unknown_formvalidate"/>
+		<config category="module" name="main" value="unknown_main"/>
+		<config category="module" name="config" value="unknown_config"/>
+	</module_config>	
+</mba_module>

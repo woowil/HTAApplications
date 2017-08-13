@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+
+<mba_module>
+	<module_revision version="1.0" createdBy="Alan Finn" createDate="2006-03-13" updatedBy="Woodworth Wilson" updateDate="" />
+	<module_information name="LDIFDE GUI" vendor="Unknown" title="Alan Finn :: LDIFDE" shortname="ldifde" />
+	<module_config>
+		<config category="module" type="path" name="PathBin" value="data\bin"/>
+		<config category="module" type="path" name="PathPic" value="data\pic"/>
+		<config category="module" type="path" name="PathDoc" value=".\"/>
+		<config category="module" type="path" name="PathScript" value="scripts"/>
+		<config category="module" type="path" name="PathStyle" value="scripts"/>
+		
+		<config category="module" type="file" name="FileHTML" value="mba-ldifde-html.htm"/>
+		<config category="module" type="file" name="FileDocs" value="mba-ldifde-docs.ini"/>
+		<config category="module" type="file" name="FileDB" value="data\db\mba-ldifde-unknown.mdb"/>
+		
+		<config category="module" type="function" name="f_init" value="ldifde_init"/>
+		<config category="module" type="function" name="f_menubar" value="ldifde_menu"/>
+		<config category="module" type="function" name="f_navigate" value="ldifde_navigate"/>
+		<config category="module" type="function" name="f_forminit" value="ldifde_forminit"/>
+		<config category="module" type="function" name="f_formldifde" value="ldifde_formldifde"/>
+		<config category="module" type="function" name="f_formactivate" value="ldifde_formactivate"/>		
+		<config category="module" type="function" name="f_formvalidate" value="ldifde_formvalidate"/>
+		<config category="module" type="function" name="f_main" value="ldifde_main"/>
+		<config category="module" type="function" name="f_event" value="ldifde_event"/>
+	</module_config>	
+</mba_module>

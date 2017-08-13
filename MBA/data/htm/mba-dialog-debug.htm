@@ -1,1 +1,63 @@
-This is a planned Release
+<html>
+<head>
+<title>About</title>
+
+<style type="text/css">
+@import url(../../source/styles/mba.css);
+</style>
+
+<script language="JavaScript">
+
+var MBA, oHTA // Must create Global!
+
+function mba_dialog_saveas(){
+	try{
+		if(window.dialogArguments){
+			dialogArguments.__MDoc.saveAsHTML(document.body,__M.fls.div_html)
+		}
+	}
+	catch(e){
+		alert("mba_dialog_saveas(): " + e.description)
+	}
+}
+
+function mba_dialog_onload(){
+	try{
+		if(window.dialogArguments){ // Dialog			
+			__M = dialogArguments.__M
+			oHTA = dialogArguments.oMBA
+			var __HFile = dialogArguments.__HFile, o
+			
+			
+			//document.styleSheets(0).addImport(__M.fls.css_common,0)
+			
+			
+		}
+	}
+	catch(e){
+		alert("mba_dialog_onload(): " + e.description)
+	}
+	finally{
+		oTable.refresh()
+		document.recalc()
+	}
+}
+
+</script>
+</head>
+<body scroll="no" onload="window.setTimeout('mba_dialog_onload()',0)">
+
+<form name="oForm">
+<table height="100%" width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+	<td lass="mba-td-1" valign="middle" align="center">
+
+	
+
+	</td>
+</tr>
+</table>
+</form>
+
+</body>
+</html>

@@ -1,1 +1,125 @@
-This is a planned Release
+<html>
+<head>
+<title>About</title>
+
+<style id="Mystyle" type="text/css">
+@import url(../../source/styles/mba.css);
+</style>
+
+<script language="JavaScript">
+
+var MBA, oHTA, __HFile,__HLog // Must create Global!
+var oFso = new ActiveXObject("Scripting.FileSystemObject");
+
+function mba_dialog_saveas(){
+	try{
+		if(window.dialogArguments){
+			dialogArguments.__MDoc.saveAsHTML(document.body,__M.fls.div_html)
+		}
+	}
+	catch(e){
+		alert("mba_dialog_saveas(): " + e.description)
+	}
+}
+
+function mba_dialog_onload(){
+	try{
+		if(window.dialogArguments){ // Dialog			
+			var o
+			__M = dialogArguments.__M
+			oHTA = dialogArguments.oMBA
+			__HLog = dialogArguments.__HLog
+			__HFile = dialogArguments.__HFile
+			
+			o = oTable.rows(0).cells(0), o.innerHTML = __M.title + o.innerHTML // sets the title
+			o = oTable.rows(1).cells(1), o.innerHTML += __M.mod.purpose
+			o = oTable.rows(2).cells(1), o.innerHTML += __M.mod.author			
+			o = oTable.rows(3).cells(1), o.innerHTML += __M.title
+			o = oTable.rows(4).cells(1), o.innerHTML += oHTA.version
+			
+			for(var i = 0, iLen = __M.mdl.length; i < iLen; i++){
+				oForm.modules.options[i+1] = new Option(__M.mdl[i].title,null)
+			}
+			
+			oDivRelease.innerText = __HFile.readall(__M.fls.mba_releasenotes)
+			oDivRelease.style.height = "80px"
+			oDivRelease.style.backgroundColor = "#EEEEEE"
+			
+			oDivDisclaimer.innerText = __HFile.readall(__M.fls.mba_disclaimer)
+			//oDivDisclaimer.className("mba-div-box")
+			oDivDisclaimer.style.height = "80px"
+			oDivDisclaimer.style.backgroundColor = "#EEEEFF"
+			
+			oMarquee.innerText = __M.mod.credits
+			oMarquee.style.backgroundColor = __M.cur_color.col_normal
+			oMarquee.style.textAlign = "center"
+			
+			oTable.rows(oTable.rows.length-1).cells(0).style.backgroundColor = __M.cur_color.col_normal
+			oTable.rows(oTable.rows.length-1).cells(0).style.color = __M.cur_color.col_dark
+			oTable.rows(oTable.rows.length-1).cells(0).style.filter = 'progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr="#EEEEEE", EndColorStr="' +  __M.cur_color.col_normal + '")'
+			
+			oTable.rows(oTable.rows.length-1).cells(0).firstChild.style.color = __M.cur_color.col_dark
+			
+			oForm.save.style.color = oForm.print.style.color = oForm.close.style.color = __M.cur_color.col_dark
+			oForm.save.style.width = oForm.print.style.width = oForm.close.style.width = __M.mod.buttom_wd3
+		}
+	}
+	catch(e){
+		alert(e.description)
+		//__HLog.error(e,this)
+	}
+	finally{
+		oTable.refresh()
+		document.recalc()
+	}
+}
+
+</script>
+</head>
+<body scroll="no" onload="setTimeout('mba_dialog_onload()',0)">
+
+<form name="oForm">
+<table height="100%" width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+	<td lass="mba-td-1" valign="middle" align="center">
+
+	<table id="oTable" width="85%" border="0" cellspacing="3" cellpadding="0">	
+	<tr valign="top">
+		<td height="70" colspan="2" class="mba-about-1" align="center"><hr noshade size="2"></td>
+	</tr>
+	<tr><td>Purpose</td><td>&nbsp;</td></tr>
+	<tr><td width="1%">Author</td><td>&nbsp;</td></tr>
+	<tr><td nowrap>Title</td><td>&nbsp;</td></tr>
+	<tr><td nowrap>Version</td><td>&nbsp;</td></tr>
+	<tr><td nowrap>Available Modules &nbsp;</td><td><select name="modules"><option></select></td></tr>
+	<tr><td colspan="2"><hr noshade size="2" color="#545454"></td></tr>
+	<tr valign="top">
+		<td>Release Notes</td>
+		<td><div id="oDivRelease" class="mba-div-box"></div></td>
+	</tr>
+	<tr valign="top">
+		<td>Disclaimer</td>
+		<td><div id="oDivDisclaimer" class="mba-div-box"></div></td>
+	</tr>
+	<tr><td colspan="2"><hr noshade size="2" color="#545454"></td></tr>
+	<tr valign="top">
+		<td>Credits</td>
+		<td><marquee class="mba-marquee-1" id="oMarquee" behavior="scroll" align="absmiddle" direction="up" height="40" width="100%" hspace="0" vspace="0" loop="infinite" scrollamount="1" scrolldelay="120" onMouseOver="this.stop();" onMouseOut="this.start();"></marquee></td>
+	</tr>
+	<tr>
+		<td class="mba-about-2" align="center" colspan="2">
+		<hr noshade size="2" color="#545454"><br>
+		<input name="save" type="button" value="Save As..." onclick="mba_dialog_saveas()"> 
+		<input name="print" type="button" value="Print" onclick="document.execCommand('print')"> &nbsp; &nbsp;
+		<input name="close" type="button" value="Close" onclick="window.close()"><br>&nbsp;
+		</td>
+	</tr>	
+	</table>
+
+	</td>
+</tr>
+</table>
+</form>
+
+</body>
+</html>

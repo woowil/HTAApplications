@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+
+<mba_module>
+	<module_revision version="1.0" createdBy="Woodworth Wilson" createDate="2007-09-07" updatedBy="Woodworth Wilson" updateDate="" />
+	<module_information name="Database" vendor="nOsliw Solutions" title="nOsliw Solutions :: Database" shortname="database" />
+	<module_config>
+		<config category="module" type="path" name="PathDB" value="data\db"/>
+		<config category="module" type="path" name="PathBin" value="data\bin"/>
+		<config category="module" type="path" name="PathPic" value="data\pic"/>
+		<config category="module" type="path" name="PathDoc" value="data\doc"/>
+		<config category="module" type="path" name="PathScript" value="scripts"/>
+		<config category="module" type="path" name="PathStyle" value="scripts"/>
+
+		<config category="module" type="file" name="FileHTML" value="mba-database-html.htm"/>
+		<config category="module" type="file" name="FileDocs" value="mba-database-docs.ini"/>
+		<config category="module" type="file" name="FileDB" value="data\db\mba-database-document.mdb"/>
+		<config category="module" type="text" name="FileDBUser" value="Woowil"/>
+		<config category="module" type="text" name="FileDBPass" value=""/>
+		
+		<config category="module" type="function" name="f_init" value="database_init"/>
+		<config category="module" type="function" name="f_menubar" value="database_menu"/>
+		<config category="module" type="function" name="f_navigate" value="database_navigate"/>
+		<config category="module" type="function" name="f_forminit" value="database_forminit"/>
+		<config category="module" type="function" name="f_formbehavior" value="database_formbehavior"/>
+		<config category="module" type="function" name="f_formactivate" value="database_formactivate"/>		
+		<config category="module" type="function" name="f_formvalidate" value="database_formvalidate"/>
+		<config category="module" type="function" name="f_main" value="database_main"/>
+		<config category="module" type="function" name="f_event" value="database_event"/>
+	</module_config>	
+</mba_module>

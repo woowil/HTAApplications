@@ -1,1 +1,132 @@
-This is a planned Release
+<html> 
+ <head> 
+  <hta:application id = "isql00" 
+  /> 
+  <title>Interactive SQL (Vers. 0.0)</title> 
+  <meta http-equiv = "content-script-type" content = "text/vbscript"/> 
+
+  <script language = "VBScript" 
+          type     = "text/vbscript" 
+  > 
+'<![CDATA[ 
+
+Option Explicit 
+
+''= connects to SQL DB and display result set for select in MS DataGrid 
+' ============================================================================ 
+Sub doTest() 
+
+  Const adOpenKeyset = 1 ' 00000001 
+  Const cnGoodParms  = 2 ' Select Case which works for you (after editing!) 
+
+  Dim sCS 
+  Dim sSQL 
+
+  Select Case cnGoodParms 
+    Case 0 ' ODBC German DSN NORDWIND ok (tested) 
+         sCS  = "DSN=NORDWIND" 
+         sSQL = "SELECT * FROM Kunden" 
+    Case 1 ' ODBC English DSN NORTHWIND ok (not tested) 
+         sCS  = "DSN=NORTHWIND" 
+         sSQL = "SELECT * FROM Customer" 
+    Case 2 ' OLEDB JET German Nordwind.mdb (tested) 
+         sCS  = "L:\Development\HTA\PMT\_debug\Nwind.mdb" 
+         sCS  = "Provider=Microsoft.Jet.OLEDB.4.0;Password="""";User ID=Admin;Data Source=" + sCS + ";" 
+         sSQL = "SELECT * FROM Artikel" 
+    Case 3 ' ODBC MS SQL Server (tested) 
+         sCS  = "DSN=LocalServer" 
+         sSQL = "SELECT * FROM sysusers" 
+    Case 4 ' OLEDB MS SQL Server (tested) 
+         sCS  = "W2K" 
+         sCS  = "Provider=sqloledb;Data Source=" + sCS + ";Integrated Security=SSPI" 
+         sSQL = "SELECT * FROM sysusers" 
+    Case Else 
+         MsgBox "cnGoodParms = " & cnGoodParms & " - not defined!" 
+         Exit Sub 
+  End Select 
+
+  Document.All( "id_tdInfo" ).innerTEXT = cnGoodParms & ": " & sCS 
+
+  Dim oAdoDC 
+  Dim oAdoDG 
+
+  Set oAdoDC  = Document.All( "id_oAdoDC" ) 
+  Set oAdoDG  = Document.All( "id_oAdoDG" ) 
+
+  oAdoDC.ConnectionString   = sCS 
+  oAdoDC.CursorType         = adOpenKeyset 
+
+  oAdoDG.Font.Name          = "Arial" 
+  oAdoDG.Font.Size          = "8" 
+  oAdoDG.headFont.Name      = "Arial" 
+  oAdoDG.headFont.Size      = "8" 
+
+  oAdoDC.Recordsource       = sSQL 
+  oAdoDC.Refresh 
+  Set oAdoDG.DataSource     = oAdoDC.Recordset 
+  oAdoDG.Caption            = sSQL 
+
+End Sub 
+
+''= refreshes the HTA page, which includes re-running any Windows_Onload code 
+' ============================================================================ 
+Sub reloadHTA() 
+  location.reload( True ) 
+End Sub 
+
+']]> 
+  </script> 
+ </head> 
+ <body> 
+  <table border = "1" 
+         height = "100%" 
+         width  = "100%" 
+  > 
+
+   <tr> 
+    <td> 
+     <table border = "1" 
+            height = "100%" 
+            width  = "100%" 
+     > 
+      <tr height  = "1"> 
+       <td id = "id_tdInfo"> 
+        ** Connectionstring ** 
+       </td> 
+      </tr> 
+
+      <tr height  = "1"> 
+       <td> 
+        <object classid = "clsid:67397AA3-7FB1-11D0-B148-00A0C922E820" 
+                id      = "id_oAdoDC" 
+                height  = "1" 
+                width   = "1" 
+        > 
+        </object> 
+       </td> 
+      </tr> 
+
+      <tr> 
+       <td> 
+        <object classid = "clsid:CDE57A43-8B86-11D0-B3C6-00A0C90AEA82" 
+                id      = "id_oAdoDG" 
+                style   = "position:relative;width:100%;height:100%" 
+        > 
+        </object> 
+       </td> 
+      </tr> 
+
+     </table> 
+    </td> 
+   </tr> 
+
+   <tr height  = "1"> 
+    <td> 
+     <input type = "BUTTON" value = "Test"   onclick = "doTest()"> 
+     <input type = "BUTTON" value = "reload" onclick = "reloadHTA()"> 
+    </td> 
+   </tr> 
+
+  </table> 
+ </body> 
+</html> 

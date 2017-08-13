@@ -1,0 +1,41 @@
+
+
+#oTableFileMan{
+	position         : relative;	
+	border           : #545454 1px inset;
+	width            : 100%;
+	height			 : 100%;
+	overflow         : auto;
+}
+
+#oTableFileMan TD{
+	background-color : #EFEFEF;
+	padding			: 2px;
+	font			: normal 11px Tahoma;
+	color         	: #000000;
+	border			: #EFEFEF 1px solid;
+}
+
+
+#oTableFileMan TH{
+	background-color : #EEEEC0;
+	padding			: 3px;
+	font			: bold 11px Tahoma;
+	color         	: #000000;
+	text-align		: left;
+	font-variant	: small-caps;
+
+}
+
+#oTbyManagementFile{
+	position		: relative;
+	overflow		: scroll;	
+}
+
+#oTbyManagementFile .mba-input-tw{
+	background: transparent;
+	border-width: 0;
+	margin: 0;
+	padding: 0;
+	width: auto;
+}

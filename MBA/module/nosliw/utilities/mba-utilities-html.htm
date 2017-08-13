@@ -1,1 +1,450 @@
-This is a planned Release
+<DIV id="oDivUtilityPasswd">
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="3">
+<form name="oFormUtilityPasswd">
+<tr>
+	<td width="15">&nbsp;</td>
+	<td width="200" class="mba-pic-line">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td valign="top">
+	<table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">	
+	<tr valign="top">
+		<td width="35%">
+		<fieldset name="oFieldPasswd">
+		<legend>Keys</legend>	
+		<input name="passwd_number" type="checkbox" value="" checked> Numbers<br>
+		<input name="passwd_alphaupper" type="checkbox" value="" checked> Alpha Character - Upper case<br>
+		<input name="passwd_alphalower" type="checkbox" value="" checked> Alpha Character - Lower case<br>
+		<input name="passwd_nonascii" type="checkbox" value=""> Non-ASCII, ex: { # %<br>
+		<input name="passwd_unicode" type="checkbox" value=""> UniCode, ex: å æ ø<br>
+		<hr size="2" noshade>
+		<b>any string</b><br>
+		<input name="passwd_string" type="text" value="" maxlength="100" style="width:100%">
+		<hr size="2" noshade>
+		<input name="passwd_shuffle" type="checkbox" value=""> Shuffle<br>
+		<input name="passwd_encode" type="checkbox" value=""> Encode (not: å Æ ö)<br>		
+		</fieldset>
+		
+		<fieldset name="oFieldPasswd">
+		<legend>Length/Quantity</legend>	
+		<select name="passwd_length">
+		<option value="4">4<option value="5">5<option value="6">6<option value="8" selected>8<option value="10">10<option value="12">12<option value="15">15<option value="20">20<option value="30">30<option value="40">40<option value="45">45
+		</select> Password Length<br>
+		<select name="passwd_quantity">
+		<option value="1" selected>1<option value="2">2<option value="3">3<option value="4">4<option value="6">6<option value="10">10<option value="15">15<option value="20">20<option value="27">27<option value="28">28
+		</select> Password Quantity
+		</fieldset>
+		
+		<fieldset name="oFieldPasswd">
+		<legend>Random Method</legend>
+		<input name="passwd_method" type="radio" value="maxmin" checked> Simple random Min/Max<br>
+		<input name="passwd_method" type="radio" value="signum" disabled> Signum of X<br>
+		sgn(x), where x = -1, 0, 2<br>
+		<input name="passwd_method" type="radio" value="linear" disabled> <a href="http://en.wikipedia.org/wiki/Linear_congruential_generator" target="PMTLink">Linear Congruential</a><br>
+		 X<sub>(n+1)</sub> = (aX<sub>(n)</sub> + c) mod m, n >= 0<br>where c and m = prime numbers<br>
+		<input name="passwd_method" type="radio" value="bitshift" disabled> Bit Shift<br>
+		</fieldset>
+		</td>
+		<td width="65%" height="150">
+		<fieldset name="oFieldPasswd">
+		<legend>Password</legend>
+		<div id="oDivUtilityPasswdResult" style="position:relative;width:100%;overflow:auto;font:normal 11px Arial;"></div>
+		</fieldset>
+		</td>
+	</tr>
+	</table>
+	</td>
+	<td width="15">&nbsp;</td>
+	<td width="75" class="mba-pic-line">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+</tr>
+</form>
+</table>
+</DIV>
+
+
+<DIV id="oDivUtilityHash">
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="3">
+<form name="oFormUtilityHash">
+<tr>
+	<td width="15">&nbsp;</td>
+	<td width="200" class="mba-pic-line">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td valign="top">
+	<div id="oDivHashDocSup" class="mba-div-sup">ZmeY Information</div>
+	<div id="oDivHashDocSub" class="mba-div-sub">
+	
+		<div id="oDivHashPanel1" class="hui-panel-frame">
+		<div class="hui-panel-panes">
+		<div class="hui-panel-pane" title="Collection">
+		This is a collection of fifteen ActiveX objects that implement <b>CRC-32</b> and <b>Adler-32</b> checksum algorithms, seven cryptographic hash (also known as message digest) algorithms, and four algorithms for calculating Hash-based Message Authentication Codes (HMAC).<br><br>The seven message-digest algorithms are: <li><b>MD4</b> and <b>MD5</b> developed by RSA Data Security, Inc., <li><b>SHA-1</b> developed by the National Institute of Standards and Technology (NIST) and by the National Security Agency (NSA), <li><b>RIPEMD-128</b>, <b>RIPEMD-160</b>, <b>RIPEMD-256</b>, and <b>RIPEMD-320</b> developed by Hans Dobbertin, Antoon Bosselaers, and Bart Preneel.<br><br>
+		HMAC algorithms are: <li><b>HMAC-MD5</b>, <b>HMAC-SHA1</b>, <b>HMAC-RIPEMD128</b>, and <b>HMAC-RIPEMD160</b> based, respectively, on <b>MD5</b>, <b>SHA-1</b>, <b>RIPEMD-128</b>, and <b>RIPEMD-160</b>.
+		</div>
+
+		<div class="hui-panel-pane" title="Features">
+		<li>Unified interface to the most popular checksum, cryptographic hash, and HMAC algorithms.
+		<li>Includes implementation of RIPEMD family of algorithms, which are not available from the standard CryptoAPI providers. 
+		<li>Optimized in assembly language for maximum performance on sixth generation x86 processors.
+		<li>Accessible from a wide range of programming languages and development environments.
+		<li>Designed for optimal performance in both single-threaded and multi-threaded environment.
+		</div>
+	
+		<div class="hui-panel-pane" title="Algorithms">
+		Hash algorithms take an input data stream of arbitrary length and produce a hash value of a fixed size (typically 128 or 160 bits). The hash value can be used:
+		<li>To verify that the contents of files or messages has not been modified. 
+		<li>To store passwords. The cryptographic hash is "one-way", which means there is no other way to determine which password was used to generate the hash value or to find another password that produces the same hash value than attempting a "brute-force" attack. 
+		<li>As a part of more complex cryptographic schemes.
+
+		<br><br>CRC-32 and Adler-32 are not cryptographic hash algorithms, but they perform a similar operation: map a data of arbitrary length to a value of fixed size (32 bits). The main difference is that checksums are designed to be fast and cryptographic hash functions are designed to be secure. CRC-32 checksums are used in some popular archive formats such as RAR and ZIP to verify the integrity of the archived files.
+		<br><br>RIPEMD-256 and RIPEMD-320 are constructed from, respectively, RIPEMD-128 and RIPEMD-160. The security level of RIPEMD-256 is only guaranteed to be the same as that of RIPEMD-128, and similarly for RIPEMD-320 with respect to RIPEMD-160. Use the extended 256-bit and 320-bit functions when you need a longer hash value (e.g. as input to some cryptographic function) without needing a higher security level. To learn more about RIPEMD family of hash functions, visit <a href=\"http://www.esat.kuleuven.ac.be/cosic/cosic.html\" target=\"_blank\">COSIC\'s web site</a>.
+		<br><br>Think of HMAC algorithms as of "personalized" (by supplying a secret key) cryptographic hash algorithms. Only the party that knows the key can create or verify message digests. It is recommended that the length of the key is at least equal to the length of the output of the algorithm (128 bits for HMAC-MD5 and HMAC-RIPEMD128, 160 bits for HMAC-SHA1 and HMAC-RIPEMD160). Using the same key for both encrypting the data and calculating the HMAC digest should be avoided. For more information see RFC 2104 and related documents.
+		</div>
+		
+		</div>
+		</div>
+	
+	
+	</div>	
+	<br>
+	<div id="oDivHashXmeYSup" class="mba-div-sup">ZmeY Soft Hash</div>
+	<div id="oDivHashXmeYSub" class="mba-div-sub">
+	
+	<table align="center" width="100%" border="0" cellspacing="0" cellpadding="2" class="mba-table-3">	
+	<col span="1" width="10"><col span="1" width="155"><col span="1" width="160">
+	<tr class="mba-head-5">
+		<td>&nbsp;</td>
+		<td>Bits / Algorithm</td>
+		<td>Object (ProgId)</td>
+		<td>Description</td>
+	</tr>
+	<tr><td colspan="4">&nbsp;<br></td></tr>
+	<tr valign="top">
+		<td><input name="operation1" type="radio" value="hashes" checked></td>
+		<td><select name="hashes" style="width:150px;"></select></td>
+		<td><div id="oDivHashProgId">ZmeYsoft.Hashes.Hash</div></td>
+		<td><div id="oDivHashDesc">Universal object</div></td>	
+	</tr>
+	<tr valign="top">
+		<td><input name="operation1" type="radio" value="hmac"></td>
+		<td><select name="hmac" style="width:150px;"></select></td>
+		<td><div id="oDivHmacProgId">ZmeYsoft.HMACs.HMAC</div></td>
+		<td><div id="oDivHmacDesc">Universal object</div></td>	
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td colspan="2"><input name="key" type="text" value="" size="55" maxlength="100"></td>
+		<td>Secret Key</td>
+	</tr>
+	<tr><td colspan="4">&nbsp;</td></tr>	
+	<tr class="mba-head-5">
+		<td>&nbsp;</td><td colspan="2">Hash String</td><td>Description</td>	
+	</tr>
+	<tr><td colspan="4">&nbsp;</td></tr>
+	<tr valign="top">
+		<td><input name="operation2" type="radio" value="question" checked></td>
+		<td colspan="2"><input name="question" type="text" value="" size="55" maxlength="100"></td>
+		<td>Secret Question</td>
+	</tr>
+	<tr valign="top">
+		<td><input name="operation2" type="radio" value="file"></td>
+		<td colspan="2"><input name="file" type="file" size="41" maxlength="100"></td>
+		<td>File</td>
+	</tr>
+	<tr valign="top">
+		<td><input name="operation2" type="radio" value="folder"></td>
+		<td colspan="2"><input name="folder" type="file" size="41" maxlength="100"></td>
+		<td>Folder (any file in folder)</td>
+	</tr>
+	<tr><td colspan="4">&nbsp;</td></tr>	
+	</table>
+	</DIV>
+	<br>
+	<div id="oDivHashResultSup" class="mba-div-sup">Result</div>
+	<div id="oDivHashResultSub" class="mba-div-sub">
+	<table width="98%" border="0" cellspacing="0" cellpadding="0" class="mba-table-1">
+	<caption align="center" nowrap id="oCapUtilityHash"><b><i>XmeY Soft Hash</i></b></caption>
+	<thead><tr class="mba-head-2"><th>&nbsp;</th><th>Hash</th><th>&nbsp;</th></tr></thead>
+	<tfoot><tr class="mba-head-2"><th>&nbsp;</th><th>Hash</th><th>&nbsp;</th></tr></tfoot>
+	<tbody id="oBdyUtilityHash"></tbody>
+	</table>
+	</div>
+	<br>
+	</td>
+	<td width="15">&nbsp;</td>
+	<td width="75" class="mba-pic-line">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+</tr>
+</form>
+</table>
+</DIV>
+
+
+<DIV id="oDivUtilityCompress">
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="3">
+<form name="oFormUtilityCompress">
+<tr>
+	<td width="15">&nbsp;</td>
+	<td width="200" class="mba-pic-line">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td valign="top">
+	<table align="center" width="100%" border="0" cellspacing="0" cellpadding="0">	
+	<tr valign="top">
+		<td nowrap>
+		<fieldset name="oFieldCompress">
+		<legend>Files</legend>
+		<div id="oDivFiles">
+		<input name="compress_file" type="radio" value="src_file" checked> <input name="src_file" type="file" size="45" value=""> Source File<br>
+		<input name="compress_file" type="radio" value="src_folder"> <input name="src_folder" type="file" size="45" value=""> Source Folder <i>(choose a file in folder)</i><br>
+		<span class="mba-span-space18"></span><input name="compress_recursive" type="checkbox"> Recursively<br>
+		<span class="mba-span-space18"></span><input name="dst_folder" type="file" size="45"> Destination Folder <i>(choose a file in folder)</i><br>
+		<input name="compress_type" type="radio" value="compress" checked> Compress
+		<input name="compress_type" type="radio" value="uncompress"> Uncompress
+		</div>
+		</fieldset><br>
+		
+		<fieldset name="oFieldCompress" style="width:50%;">
+		<legend>Compress</legend>
+		<div id="oDivCompress">
+		<input name="compress_delcomments" type="checkbox"> Delete Comments<br>
+		<input name="compress_dellines" type="checkbox"> Delete Lines<br>
+		<input name="compress_addsemicolon" type="checkbox" checked disabled> Add Semi-Colon<br>
+		<input name="compress_delwhitespace" type="checkbox"> Delete White Space<br>
+		<input name="compress_mergelines" type="checkbox"> Merge Lines<br>
+		<input name="compress_renamefunctions" type="checkbox"> Rename Functions
+		<hr size="1" noshade>
+		<input name="compress_encrypt" type="checkbox"> Encrypt files<br>
+		</div>
+		</fieldset>
+		<fieldset name="oFieldCompress" style="width:50%;">
+		<legend>Uncompress</legend>
+		<div id="oDivUncompress">
+		<input name="compress_addcomments" type="checkbox"> Add Comments<br>
+		<input name="compress_addlines" type="checkbox"> Add Lines<br>
+		<input name="compress_delsemicolon" type="checkbox"> Del Semi-Colon<br>
+		<input name="compress_addwhitespace" type="checkbox"> Add White Space<br>
+		<input name="compress_unmergelines" type="checkbox"> Unmerge Lines<br>
+		<input name="compress_unrenamefunctions" type="checkbox"> Unrename Functions
+		<hr size="1" noshade>
+		<input name="compress_decrypt" type="checkbox"> Decrypt files<br>
+		</div>
+		</fieldset><br>
+		
+		<fieldset name="oFieldCompress">
+		<legend>Result</legend>
+		<div id="oDivUtilityCompressResult" style="position:relative;width:100%;overflow:auto;font:normal 11px Arial;"></div>
+		</fieldset>
+		</td>
+	</tr>
+	</table>
+	</td>
+	<td width="15">&nbsp;</td>
+	<td width="75" class="mba-pic-line">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+</tr>
+</form>
+</table>
+</DIV>
+	
+
+<DIV id="oDivUtilityMolecule">
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="3">
+<form name="oFormUtilityMolecule">
+<tr>
+	<td width="15">&nbsp;</td>
+	<td width="200" class="mba-pic-line" valign="top">	
+	<div class="mba-div-sup">Info</div>
+	<div class="mba-div-sub">
+	
+	Hello World!<br>
+	
+	</div>
+	</td>
+	<td width="15">&nbsp;</td>
+	<td valign="top">		
+		
+		<fieldset>
+		<legend>Info</legend>
+		...
+		</fieldset>
+		
+		<fieldset>
+		<legend>Formular</legend>
+		
+		<table align="center" width="100%" border="0" cellspacing="0" cellpadding="3">
+		<tr><td width="100" nowrap>Molecule Formular</td><td><input type=text name="molecule" value="((((H)4He4))4)CuSo2" style="width:100%;"></td></td>
+		<tr><td>Molecule Weight</td><td><input type=text name="weight" value="" style="width:100%;"></td></tr>
+		<tr><td>Molecule Total</td><td><input type=text name="total" value="0" style="width:100%;"></td></tr>
+		</table>
+		
+		</fieldset>
+				
+	</td>
+	<td width="15">&nbsp;</td>
+	<td width="75" class="mba-pic-line">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+</tr>
+</form>
+</table>
+</DIV>
+
+
+<DIV id="oDivUtilityScience">
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="3">
+<form name="oFormUtilityScience">
+<tr>
+	<td width="15">&nbsp;</td>
+	<td width="200" class="mba-pic-line" valign="top">	
+	<div class="mba-div-sup">Info</div>
+	<div class="mba-div-sub">
+	
+	Hello World!<br>
+	
+	</div>
+	</td>
+	<td width="15">&nbsp;</td>
+	<td valign="top">		
+		
+		<div class="mba-div-sup">Molecule Formular</div>
+		<div class="mba-div-sub">
+		
+		<fieldset>
+		<legend>Info</legend>
+		...
+		</fieldset>
+		
+		<fieldset>
+		<legend>Formular</legend>
+		
+		<table align="center" width="100%" border="0" cellspacing="0" cellpadding="3">
+		<tr><td width="100" nowrap>Molecule Formular</td><td><input type=text name="molecule" value="((((H)4He4))4)CuSo2" style="width:100%;"></td></td>
+		<tr><td>Molecule Weight</td><td><input type=text name="weight" value="" style="width:100%;"></td></tr>
+		<tr><td>Molecule Total</td><td><input type=text name="total" value="" style="width:100%;"></td></tr>
+		</table>
+		
+		</fieldset>
+		</div><br>
+		
+		<div class="mba-div-sup">Quadratic Equation</div>
+		<div class="mba-div-sub">
+		
+		<fieldset>
+		<legend>Info</legend>
+		Let <i>F(<b>X</b>)=<span style="color:orange;font-weight:bold">a</span><b>x</b><sup>2</sup>+<span style="color:teal;font-weight:bold">b</span><b>X</b>+<span style="color:purple;font-weight:bold">c</span> = 0</i> where "<b>X</b>" is the variable and "a,b,c" are arbitry real constants. Then the roots of the equation are containable on condition that <font color=orange>a</font> is not zero. If the decrement(<font color=teal>b</font>*<font color=teal>b</font>-4*<font color=orange>a</font>*<font color=purple>c</font>) > 0, we have a complex solution otherwise ordernary.
+		</fieldset>
+		
+		<fieldset style="padding:10px">
+		<legend>Equation</legend>
+		
+		<table align="center" width="100%" border="0" cellspacing="0" cellpadding="3">
+		<tr valign="top">
+			<td>
+			<i>&#187; If..</i><br>
+			<span style="color:orange;font-weight:bold">a</span> = <input type="text" name="Xa" size=15 maxlength=20><br>
+			<span style="color:teal;font-weight:bold">b</span> = <input type="text" name="Xb" size=15 maxlength=20><br>
+			<span style="color:purple;font-weight:bold">c</span> = <input type="text" name="Xc" size=15 maxlength=20>
+			</td>
+			<td>
+			<i>&#187; Then the roots are..</i><br>
+			<b>x<sub>1</sub></b> = <input type="text" size="20" name="X1" readonly><br>
+			<b>x<sub>2</sub></b> = <input type="text" size="20" name="X2" readonly>
+			</td>
+			<td>&nbsp;<br>
+			<input type="button" name="quad_solve" value="Solve" class="mba-input-bb"> &nbsp; 
+			<input type="button" name="quad_clean" value="Clean" class="mba-input-bg">			
+			</td>
+		</tr>
+		</table>
+		
+		</fieldset>
+		</div><br>
+		
+		<div class="mba-div-sup">Matrix (A<sub>3x3</sub>) Equation</div>
+		<div class="mba-div-sub">		
+		
+		<fieldset>
+		<legend>Info</legend>
+		According to Cramer's Rule, If A<b>x</b> = <b>b</b> is a system of <b><i>n</i></b> linear equations in <b><i>n</i></b> unknowns
+		such as det(A) != 0, then the system has a unique solution. Enter the coefficients and constants values of A and B. 
+		</fieldset>
+		
+		<fieldset>
+		<legend>Matrix</legend>		
+		
+		<table width="100%" border="0" cellspacing="0" cellpadding="3">
+		<tr valign="top">
+			<td colspan="4"><b><i>&#187; Let..</i></b></td>
+		</tr>
+		<tr valign="top">
+			<td rowspan="2">
+			A<sub>11</sub><font color=orange><b>X</b></font><sub>1</sub> + A<sub>12</sub><font color=orange><b>X</b></font><sub>2</sub> + A<sub>13</sub><font color=orange><b>X</b></font><sub>3</sub> = B<sub>1</sub><br>
+			A<sub>21</sub><font color=orange><b>X</b></font><sub>1</sub> + A<sub>22</sub><font color=orange><b>X</b></font><sub>2</sub> + A<sub>23</sub><font color=orange><b>X</b></font><sub>3</sub> = B<sub>2</sub><br>
+			A<sub>31</sub><font color=orange><b>X</b></font><sub>1</sub> + A<sub>32</sub><font color=orange><b>X</b></font><sub>2</sub> + A<sub>33</sub><font color=orange><b>X</b></font><sub>3</sub> = B<sub>3</sub>
+			</td>
+			<td><=><br><=><br><=></td>
+			<td>
+			[A<sub>11</sub> A<sub>12</sub> A<sub>13</sub>] * [<font color=orange><b>X</b></font><sub>1</sub>]<br>
+			[A<sub>21</sub> A<sub>22</sub> A<sub>23</sub>] * [<font color=orange><b>X</b></font><sub>2</sub>]<br>
+			[A<sub>31</sub> A<sub>32</sub> A<sub>33</sub>] * [<font color=orange><b>X</b></font><sub>3</sub>]
+			</td>
+			<td width="60%">
+			= [B<sub>1</sub>]<br>
+			= [B<sub>2</sub>]<br>
+			= [B<sub>3</sub>]
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+			<=> A*<font color=orange><b>X</b></font> = B<br>
+			<=> <font color=orange><b>X</b></font> = A<sup>-1</sup>*B<br>
+			<=> <font color=orange><b>X</b></font><sub>n</sub> = det(A<sub>1</sub>) / det(A)<br><br>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td colspan="4"><b><i>&#187; If..</i></b></td>
+		</tr>
+		<tr valign="top">
+			<td colspan="3">
+			<select name="matrix">
+			<option value="A11" selected>A11
+			<option value="A12">A12
+			<option value="A13">A13
+			<option value="A21">A21
+			<option value="A22">A22
+			<option value="A23">A23
+			<option value="A31">A31
+			<option value="A32">A32
+			<option value="A33">A33
+			<option value="B1">B1
+			<option value="B2">B2
+			<option value="B3">B3
+			</select> <input type="text" value="" name="matrixval"><br><br>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td colspan="4"><b><i>&#187; Then..</i></b></td>
+		</tr>
+		<tr valign="top">
+			<td>
+			<font color=orange><b>X</b><sub>1</sub></font> = <input type="text" name="matrixX1" value="" size=12><br>
+			<font color=orange><b>X</b><sub>2</sub></font> = <input type="text" name="matrixX2" value="" size=12><br>
+			<font color=orange><b>X</b><sub>3</sub></font> = <input type="text" name="matrixX3" value="" size=12>
+			</td>
+			<td colspan="3">
+			<input type="button" name="matrix_solve" value="Solve" class="mba-input-bb"> &nbsp; 
+			<input type="button" name="matrix_insert" value="Insert" class="mba-input-bg">
+			</td>
+		</tr>
+		</table>
+		
+		</fieldset>
+		</div>
+		
+	</td>
+	<td width="15">&nbsp;</td>
+	<td width="75" class="mba-pic-line">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+</tr>
+</form>
+</table>
+</DIV>
+
+

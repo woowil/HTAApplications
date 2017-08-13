@@ -1,1 +1,76 @@
-This is a planned Release
+
+<html>
+<head>
+<title>Busy!!</title>
+<style type="text/css">
+@import url(../../source/styles/mba.css);
+</style> 
+<script language="JavaScript">
+
+var ID1 = ID2  = null
+var __M, oMBA
+
+function mba_dialog_interval(){
+	try{		
+		if(!__M.isactive){
+			window.close();
+		}
+	}
+	catch(e){
+		window.close();
+	}
+}
+
+function mba_dialog_cancel(){
+	if(window.dialogArguments && confirm("Cancel progress?")){
+		dialogArguments.mba_common_wait("stop",__M.mod.cur_form.name)
+		window.close();
+	} 
+}
+
+function mba_dialog_onload(){
+	try{
+		if(window.dialogArguments){ // Dialog			
+			__M = dialogArguments.__M
+			oMBA = dialogArguments.oMBA
+			
+			//document.styleSheets(0).addImport(__M.fls.css_common,0)
+			
+			oDivBusy1.style.backgroundColor = __M.cur_color.col_normal
+			oDivBusy1.style.color = __M.cur_color.col_dark
+			oDivBusy1.style.borderColor = __M.cur_color.col_dark
+			oDivBusy1.innerHTML = __M.mod.purpose + "<br><b>" + oMBA.applicationName + "</b><hr size='2' color='" + __M.cur_color.col_dark + "'>"
+			oForm.cancel.style.color = __M.cur_color.col_dark
+			
+			setInterval("mba_dialog_interval()",100)
+		}
+	}
+	catch(e){
+		dialogArguments.__HLog.error(ee,this)
+	}
+	finally{
+		oTable.refresh()
+		document.recalc()
+	}
+}
+</script>
+</head>
+<body class="mba-pic-line" scroll="no" onload="setTimeout('mba_dialog_onload()',0)">
+
+<table id="oTable" height="100%" width="100%" border="0" cellspacing="0" cellpadding="0">
+<form name="oForm">
+<tr>
+	<td valign="top" align="center">
+	<div id="oDivBusy1" class="mba-div-busy-1" align="center"></div>
+	<div id="oDivBusy2" class="mba-div-busy-2" align="center">
+	<br>&#9633;&nbsp;&#9633;&nbsp;&#9633; &nbsp;&nbsp; H T A &nbsp;&nbsp; I S &nbsp;&nbsp; B U S Y &nbsp;&nbsp; P L E A S E &nbsp;&nbsp; W A I T ! &nbsp;&nbsp; &#9633;&nbsp;&#9633;&nbsp;&#9633;
+	<br><br>
+	<div align="right"><input name="cancel" type="button" value="Cancel" class="mba-input-bb" onclick="mba_dialog_cancel()"></div>
+	</div>	
+	</td>
+</tr>
+</form>
+</table>
+
+</body>
+</html>

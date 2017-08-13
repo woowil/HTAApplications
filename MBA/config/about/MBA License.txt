@@ -1,0 +1,43 @@
+nOsliw Solutions - Software License Agreement for Registered Users 
+
+Please read the terms and conditions of this license agreement (the "License") before installing and running "Module Based HTA Application". By installing and using the Software you accept and agree to the terms of this License. This License constitutes the entire agreement concerning the Software between you and nOsliw Solutions and it supersedes any prior proposal or representation.  If you do not agree with these terms and conditions, promptly de-install the Software and, if  you paid for a License, contact your distributor for a refund of the amount that you paid.
+ 
+The term "Software" includes, and these terms and conditions also apply to, any updates, modifications and upgrades to the Software that you may receive from time to time.
+ 
+1. License Grant
+This License permits you, as purchaser of the Software, to use one copy of the Software solely for your use on one computer per purchased copy of the software, or, for users of Windows® Terminal Server ("WTS"), solely for use by users covered under the WTS License. The enclosed documentation ("Documentation") may not be copied. You agree that you will not sublicense, assign, transfer, distribute, pledge, lease, rent or share your rights under this License except with prior written permission from Lavasoft AB. You agree that you will not modify, adapt or translate, or disassemble, decompile, reverse engineer or otherwise attempt to discover the source code of the Software.
+
+2. Standard Maintenance and Support
+All updates/upgrades for your purchased edition (regardless of build or version) are free of charge for the year following your purchase of the Software.  On each anniversary of your initial purchase, you will be required to pay the yearly maintenance and support fee in accordance with the then applicable price list to continue receiving updates/upgrades for that following year.
+ 
+3. nOsliw Solutions's Rights
+You acknowledge and agree that the Software and Documentation (the "Licensed Products") are proprietary products of Lavasoft AB under international copyright law and disclosed to you by Lavasoft AB in confidence. You shall take all reasonable steps to safeguard the Licensed Products. Lavasoft AB owns and retains all copyright, trademark, trade secret and other proprietary rights in and to the Licensed Products. This License conveys to you only a non-exclusive and limited right of use, revocable in accordance with the terms and conditions of this License. 
+ 
+4. Service Level Agreements
+Support services may be purchased under separate agreement with Lavasoft AB.
+ 
+5. Limited Warranty
+Lavasoft AB warrants that for your benefit alone, for ninety (90) days from the day of delivery to you (the "Warranty Period") the Software media, under normal use in a compatible execution environment, will be free from defects in material and workmanship. Any replacement program will be warranted for the remainder of the original warranty period or thirty (30) days from the date of receipt by you, whichever is longer. In no event may you bring any claim, action or proceeding arising out of the warranty set forth in this Article 4 more than six (6) months after the date on which the breach of warranty occurred.
+
+6. Exceptions to Warranties; Disclaimers
+EXCEPT FOR THE ABOVE EXPRESS LIMITED WARRANTY, LAVASOFT AB DISCLAIMS ANY AND ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR PARTICULAR PURPOSE. Lavasoft AB does not warrant that the Software, its use, operation or your ability to use the Software will be uninterrupted or error-free or that all Software errors will be corrected. The warranty set forth above shall not apply to any defect or problems caused by any defect in any hardware or software used in combination with the Software, or use of the Software in execution environments not specified in the Documentation. Lavasoft AB does not warrant that the Software or service will meet your requirements or that the operation of the Software will be uninterrupted or error free. 
+
+Lavasoft AB’s limited warranty is void if a breach of the warranty has resulted from (i) accident, corruption or misuse of the Software; or (ii) acts or omissions by someone other than Lavasoft AB.
+
+7. Refund Policy
+Lavasoft AB will refund the full price of the Software if the Software is damaged or defective, and only if you notify Lavasoft AB of the refund request within fourteen (14) days of the date you purchased the Software.
+
+8. Exclusive Remedies
+You agree that if, during the Warranty Period, a defect in the Software media appears, your exclusive remedy will be, in Lavasoft AB's sole option, to replace the media or to credit the amounts paid by you to Lavasoft AB, if any, and terminate this License. The later remedy is subject to the return of all copies of the Licensed Products. 
+
+9. Limitations of Liability
+In no event shall Lavasoft AB be liable for any damages to you or any other party whether arising out of contract or from tort including loss of data, profits or business or other special, incidental, exemplary or consequential damages, even if Lavasoft AB has been advised of the possibility of such loss or damages. Lavasoft AB’s cumulative liability shall not exceed the license fee paid, if any, for use of this Software and Documentation. This section shall survive termination of this License.
+
+10.  Termination
+This agreement is in effect until terminated.  You may terminate the agreement at any time by destroying all copies of the Software and Documentation and erasing any copies on storage media.  The agreement also terminates if you fail to comply with any terms and conditions of this agreement.  In such event, you agree to destroy and erase all copies of the Software and Documentation, and Lavasoft AB will be entitled to all remedies in accordance with applicable law.
+
+11. General
+This agreement shall be governed by the laws of Sweden. 
+
+12. Contact
+Use of the Software other than for your internal operations on a single computer requires that you have entered into a separate license agreement with nOsliw Solutions. Please e-mail sales@lavasoft.de for further information.

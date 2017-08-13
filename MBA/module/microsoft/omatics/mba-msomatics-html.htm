@@ -1,1 +1,223 @@
-This is a planned Release
+
+
+<DIV id="oDivTweakomatic">
+<form name="oFormTweakomatic">
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="3">
+<tr>
+	<td width="15">&nbsp;</td>
+	<td width="200" class="mba-pic-line" valign="top">	
+	
+	<div class="mba-div-sup">Last Action</div>
+	<div class="mba-div-sub">	
+	<span id="ActionArea"></span>	
+	</div><br>
+	
+	<div class="mba-div-sup">Task Description</div>
+	<div class="mba-div-sub">
+	<span id="HelpArea">&nbsp;</span>	
+	</div>
+	
+	</td>
+	<td width="15">&nbsp;</td>
+	<td valign="top">	
+	
+	<div class="mba-div-sup">Actions</div>
+	<div class="mba-div-sub">	
+	
+	<fieldset>
+	<legend> Component </legend>
+	&nbsp;<br>
+	<span id="ComponentArea"></span>
+	</fieldset><br><br>	
+	
+	<fieldset>
+	<legend> Category </legend>
+	&nbsp;<br>
+	<span id="CategoryArea"><select><option></select></span>
+	</fieldset><br><br>
+	
+	<fieldset>
+	<legend> Task </legend>
+	&nbsp;<br>
+	<span id="TaskArea"><select><option></select></span>	
+	</fieldset><br><br>	
+	
+	<fieldset>
+	<legend> Set Task </legend>	
+	<textarea rows="12" name="ScriptArea" cols="90" style="width:100%;border-width:0;"></textarea><br><br>
+	<input class="mba-input-bg" type="button" value="Run" name="run_button"  onClick="RunConfigurationScript()"> &nbsp; 
+	<input class="mba-input-bg" type="button" value="Save"  name="save_button"  onClick="SaveConfigurationScript()"> &nbsp; 
+	<input class="mba-input-bg" type="button" value="Set Value"  name="change_button"  onClick="ChangeValue()"> &nbsp; 
+	<input class="mba-input-bg" type="button" value="Master Script" name="Master_button"  onClick="MasterConfigurationScript()"> &nbsp; 
+	<input class="mba-input-bg" type="button" value="Show" name="show_button"  onClick="ShowConfigurationScript()"><br>
+	</fieldset><br><br>	
+	
+	<fieldset>
+	<legend> Get Task </legend>	
+	<textarea rows="12" name="RetrievalArea" cols="90" style="width:100%;border-width:0;"></textarea><br><br>
+	<input class="mba-input-bg" type="button" value="Run Script"  name="run_button2"  onClick="RunRetrievalScript()"> &nbsp; 
+	<input class="mba-input-bg" type="button" value="Save Script"  name="save_button2"  onClick="SaveRetrievalScript()"> &nbsp; 
+	<input class="mba-input-bg" type="button" value="Master Script" name="Master_button2" onClick="MasterRetrievalScript()"> &nbsp; 
+	<input class="mba-input-bg" type="button" value="ShowScript" name="show_button2"  onClick="ShowRetrievalScript()"><br>
+	</fieldset><br><br>
+	
+	</div>
+	</td>
+	<td width="15">&nbsp;</td>
+	<td width="75" class="mba-pic-line">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+</tr>
+</table>
+</form>
+</DIV>
+
+
+<DIV id="oDivADScripto">
+<form name="oFormADScripto">
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="3">
+<tr>
+	<td width="15">&nbsp;</td>
+	<td width="200" class="mba-pic-line" valign="top">	
+	<div class="mba-div-sup">...</div>
+	<div class="mba-div-sub">
+	&nbsp;	
+	
+	</div>
+	</td>
+	<td width="15">&nbsp;</td>
+	<td valign="top">	
+	
+	<div class="mba-div-sup">Actions</div>
+	<div class="mba-div-sub">		
+	
+	<fieldset>
+	<legend> Task </legend>
+	&nbsp;<br>
+	<div id="ooDivADScriptADSI" align="center">&nbsp;</div>
+	</fieldset><br><br>
+	
+	<fieldset>
+	<legend> Info </legend>
+	&nbsp;<br>
+	<input type="button" class="mba-input-bw" value="Read" name="runNotes_button" onClick="RunDialog()" onMouseover="ChangePointer()" style="width:100%;margin-bottom:5px;"><br>
+	<input type="button" class="mba-input-bw" name="notes_button" onClick="ImptDialog()" onMouseover="ChangePointer()" style="width:100%">
+	</fieldset><br><br>
+	
+	<fieldset>
+	<legend> Code </legend>	
+	&nbsp;<br>
+	<div id="oDivADScriptCode" class="code"></div>
+	</fieldset><br><br>
+	
+	</div>
+	</td>
+	<td width="15">&nbsp;</td>
+	<td width="75" class="mba-pic-line">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+</tr>
+</table>
+</form>
+</DIV>
+
+
+<DIV id="oDivHelpomatic">
+<form name="oFormHelpomatic">
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="3">
+<tr>
+	<td width="15">&nbsp;</td>
+	<td width="200" class="mba-pic-line" valign="top">	
+	<div class="mba-div-sup">Description</div>
+	<div class="mba-div-sub">
+	
+	<div id="oDivHelpDescription">The HTA Helpomatic is designed to help you write Hypertext Applications (HTAs).
+	To use the Helpomatic, select an item from the list labeled HTA Elements. 
+	When you do so, code for including the element in an HTA will appear in the box labeled HTML Code and/or in the box labeled Subroutine Code. 
+	Depending on the option selected, a sample element will also appear in the portion of the screen labeled Sample.<br><br>
+	If you wish, you can modify the code in the HTML Code box, then click the Reset Example button to see the results of those modifications. 
+	When satisfied, click Copy to Clipboard to copy the relevant code.<br><br>
+	You can also modify the script code, and configure the sample to use that code by clicking the Reset Example button found in the area labeled Subroutine Code.<br><br>
+	<b>Note</b><br>There is little error-checking in the HTA Helpomatic. If you enter improper HTML or script code, you might get an error message asking if you want to continue to run scripts on this page. If that occurs, click <b>Yes</b> and then continue.</div>
+	
+	</div>
+	</td>
+	<td width="15">&nbsp;</td>
+	<td valign="top">	
+	
+	<div class="mba-div-sup">Actions</div>
+	<div class="mba-div-sub">		
+	
+	<fieldset>
+	<legend> HTA Elements </legend>
+	&nbsp;<br>
+	<select size="10" name="hta_elements" onChange="GenerateCode()" style="width:100%">
+        <option value="Autorun Script">Autorun script</option> 
+        <option value="Basic HTML tags">Basic HTML tags</option> 
+        <option value="Button">Button</option>
+        <option value="Change cursor">Change cursor</option>
+        <option value="Checkbox">Checkbox</option>
+        <option value="Copy to Clipboard">Copy to Clipboard</option>
+        <option value="Create basic HTA">Create basic HTA</option>
+        <option value="Disabled control">Disabled control</option>
+        <option value="Display a confirmation box">Display a confirmation box</option>
+        <option value="Data display in new window">Display data in a new window</option>
+        <option value="Display the print dialog box">Display the Print dialog box</option>
+        <option value="Drop-down Listbox">Drop-down listbox</option>
+        <option value="Font Formatting">Font formatting</option>
+        <option value="Hyperlink">Hyperlink</option>
+        <option value="Listbox">Listbox</option>
+        <option value="Multi-select List Box">Multi-select listbox</option>
+        <option value="On-the-fly listbox">On-the-fly listbox</option>
+        <option value="Password box">Password box</option>
+        <option value="Paste from Clipboard">Paste from Clipboard</option>
+        <option value="Prompt the user for input">Prompt the user for input</option>
+        <option value="Radio button">Radio button</option>
+        <option value="Refresh the HTA">Refresh the HTA</option>
+        <option value="Save data">Save data to a .htm file</option>
+        <option value="Span">Span</option>
+        <option value="Table (2 Column)">Table (2-column)</option>
+        <option value="Table (3 Column)">Table (3-column)</option>
+        <option value="Table (4 Column)">Table (4-column)</option>
+        <option value="Table (Formatted Rows)">Table (formatted rows)</option>
+        <option value="Text Area">Textarea</option>
+        <option value="Text Box">Text box</option>
+        <option value="Timer">Timer</option>
+        <option value="ToolTip">ToolTip</option>
+    </select>	
+	</fieldset><br><br>	
+	
+	<fieldset>
+	<legend> HTML Code </legend>
+	&nbsp;<br>
+	<textarea rows="10" name="ConfigureArea" style="width:100%" nowrap></textarea><br>
+    <input class="mba-input-bg" type="button" value="Reset Example" name="show_example_button"  onClick="ShowExample()"> &nbsp; 
+    <input class="mba-input-bg" type="button" value="Copy to Clipboard" name="copy_html_button"  onClick="TestSub()">
+	</fieldset><br><br>
+	
+	<fieldset>
+	<legend> Subroutine Code </legend>	
+	&nbsp;<br>
+	<textarea rows="10" name="SubroutineArea" style="width:100%" nowrap></textarea><br>
+	<input class="mba-input-bg" type="button" value="Reset Example" name="reset_button"  onClick="ResetCode()"> &nbsp; 
+	<input class="mba-input-bg" type="button" value="Copy to Clipboard" name="copy_code_button"  onClick="CopyCode()">
+	</fieldset><br><br>
+	
+	<fieldset>
+	<legend> Sample </legend>	
+	&nbsp;<br>
+	<div id="SampleArea"></div>
+	</fieldset><br><br>
+	
+	<script language="VBScript" id="oScrExampleScript">
+    Sub ExampleSub
+    End Sub
+	</script>
+	
+	</div>
+	</td>
+	<td width="15">&nbsp;</td>
+	<td width="75" class="mba-pic-line">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+</tr>
+</table>
+</form>
+</DIV>

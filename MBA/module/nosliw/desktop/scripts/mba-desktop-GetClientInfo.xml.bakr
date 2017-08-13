@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!--
+<?xml-stylesheet type="text/xsl" href="TKA-GetClientInfo.xsl"?>
+
+Title      : Client Information Scan
+Date       : 05.02.2007
+Created by : Woodworth Wilson
+-->
+<ClientInfo>
+	<Config>
+		<ConfPathFileDNS>\\EDB-Drift\ClientInfo$\tka-scope.csv</ConfPathFileDNS>
+		<ConfPathFolderJob>\\EDB-Drift\ClientInfo$\200702_A</ConfPathFolderJob>
+		<ConfFileCheckDate>Tue Mar 6 00:00:36 UTC+0100 2007</ConfFileCheckDate>
+	</Config>
+	<Statistics>
+		<Schedule DateStart="20070202" DateEnd="" JobName="200702_A" JobReset="0" JobResetTime="06.02.2007 00:37:54">
+			<SchTotal>0</SchTotal>
+			<SchDHCPEnabled>0</SchDHCPEnabled>
+			<SchDHCPDisabled>0</SchDHCPDisabled>
+			<SchDHCPExternal>0</SchDHCPExternal>
+			<SchSkipped>0</SchSkipped>
+			<SchSkippedLastTime>noinfo</SchSkippedLastTime>
+			<SchSkippedLastUser>noinfo</SchSkippedLastUser>
+			<SchSkippedLastComputer>noinfo</SchSkippedLastComputer>
+			<SchSkippedLastComputerType>noinfo</SchSkippedLastComputerType>
+			<SchSuccess>0</SchSuccess>
+			<SchSuccessLastFile>noinfo</SchSuccessLastFile>
+			<SchSuccessLastTime>noinfo</SchSuccessLastTime>
+			<SchSuccessLastUser>noinfo</SchSuccessLastUser>
+			<SchSuccessLastComputer>noinfo</SchSuccessLastComputer>
+			<SchSuccessLastComputerType>noinfo</SchSuccessLastComputerType>
+			<SchSuccessKlientPlus>0</SchSuccessKlientPlus>
+			<SchSuccessKlientMK3>0</SchSuccessKlientMK3>
+			<SchSuccessSkalaDesktop>0</SchSuccessSkalaDesktop>
+			<SchSuccessSkalaLaptop>0</SchSuccessSkalaLaptop>
+			<SchSuccessSkalaServer>0</SchSuccessSkalaServer>
+			<SchSuccessUnknown>0</SchSuccessUnknown>
+			<SchFailed>0</SchFailed>
+			<SchFailedLastTime>noinfo</SchFailedLastTime>
+			<SchFailedLastUser>noinfo</SchFailedLastUser>
+			<SchFailedLastComputer>noinfo</SchFailedLastComputer>
+			<SchFailedLastComputerType>noinfo</SchFailedLastComputerType>
+			<SchDummy>0</SchDummy>
+			<SchDummyLastTime>noinfo</SchDummyLastTime>
+			<SchDummyLastUser>noinfo</SchDummyLastUser>
+			<SchDummyLastComputer>noinfo</SchDummyLastComputer>
+			<SchDummyLastComputerType>noinfo</SchDummyLastComputerType>
+			<SchError>0</SchError>
+			<SchErrorLastTime>noinfo</SchErrorLastTime>
+			<SchErrorLastUser>noinfo</SchErrorLastUser>
+			<SchErrorLastComputer>noinfo</SchErrorLastComputer>
+			<SchErrorLastComputerType>noinfo</SchErrorLastComputerType>
+			<SchErrorLastDescription>noinfo</SchErrorLastDescription>
+			<SchDebug>0</SchDebug>
+			<SchDebugLastTime>noinfo</SchDebugLastTime>
+			<SchDebugLastUser>noinfo</SchDebugLastUser>
+			<SchDebugLastComputer>noinfo</SchDebugLastComputer>
+			<SchDebugLastComputerType>noinfo</SchDebugLastComputerType>
+			<SchDebugLastDescription>noinfo</SchDebugLastDescription>
+		</Schedule>
+	</Statistics>
+</ClientInfo>

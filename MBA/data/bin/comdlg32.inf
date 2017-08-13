@@ -1,0 +1,26 @@
+; INF file for comdlg32.ocx
+
+[DefaultInstall]
+CopyFiles=install.files
+RegisterOCXs=RegisterFiles
+
+[DestinationDirs]
+install.files=11
+
+[install.files]
+comdlg32.OCX=comdlg32.OCX
+
+[RegisterFiles]
+%11%\comdlg32.OCX
+
+[comdlg32.OCX]
+file-win32-x86=thiscab
+RegisterServer=Yes
+FileVersion=5,1,43,19
+
+[version]
+signature="$CHICAGO$"
+AdvancedINF=2.0
+
+[SourceDisksNames]
+1="default",,1

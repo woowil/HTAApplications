@@ -1,0 +1,135 @@
+
+.mba-toolbar-icon-1 {
+	background: url(icon1.png) no-repeat;
+	height: 16px;
+	left: 4px;
+	position: absolute; /* Do not alter this line! */
+	width: 16px;
+}
+
+.mba-toolbar-icon-2 {
+	background: url(icon2.png) no-repeat;
+	height: 16px;
+	left: 4px;
+	position: absolute; /* Do not alter this line! */
+	width: 16px;
+}
+
+.mba-toolbar-icon-3 {
+	background: url(icon3.png) no-repeat;
+	height: 16px;
+	left: 4px;
+	position: absolute; /* Do not alter this line! */
+	width: 16px;
+}
+
+
+.mba-toolbar-menubar {
+	background: url(divider.png) #ECE9D8 no-repeat left;
+	border-style: outset;
+	border-width: 1px 0 1px 1px;
+	cursor: default;
+	padding: 3px 1px 3px 1px;
+	position: absolute; /* Do not alter this line! */
+	visibility: visible;
+	z-index: 100;
+}
+
+.mba-toolbar-menubar-drag {
+	cursor: move;
+	display: inline;
+	font: 11px Arial, Tahoma, Helvetica, sans, sans-serif;
+	padding: 2px 5px;
+	position: relative; /* Do not alter this line! */
+	visibility: hidden;
+	width: 9px;
+}
+
+.mba-toolbar-menubar-item {
+	background: #EFEDDE;
+	border: none;
+	color: #000000;
+	display: inline;
+	font: 11px Arial, Tahoma, Helvetica, sans, sans-serif;
+	padding: 2px 9px 2px 23px;
+	position: relative; /* Do not alter this line! */
+}
+
+.mba-toolbar-menubar-item-click {
+	background: #EFEDDE;
+	border-color: #8A867A;
+	border-style: solid;
+	border-width: 1px 0 1px 0;
+	color: #000000;
+	display: inline;
+	font: 11px Arial, Tahoma, Helvetica, sans, sans-serif;
+	padding: 2px 9px 2px 23px;
+	position: relative; /* Do not alter this line! */
+}
+
+.mba-toolbar-menubar-item-over {
+	background: #CCCCCC;
+	border-color: #8A867A;
+	border-style: solid;
+	border-width: 1px 0 1px 0;
+	color: #000000;
+	display: inline;
+	font: 11px Arial, Tahoma, Helvetica, sans, sans-serif;
+	padding: 2px 9px 2px 23px;
+	position: relative; /* Do not alter this line! */
+}
+
+.mba-toolbar-menu {
+	background: #FFFFFF url(menu_left.png) repeat-y;
+	/*background: #FFFFFF url(menu_left_cccccc.png) repeat-y;*/
+	border: 1px solid #8A867A;
+	color: #000000;
+	cursor: default;
+	padding-bottom: 1px;
+	padding-top: 1px;
+	position: absolute; /* Do not alter this line! */
+	visibility: hidden;
+	z-index: 100;
+}
+
+.mba-toolbar-menu-layer {
+	background: transparent;
+	display: none;
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=5,OffY=5,Color='gray',Positive='true');
+	position: absolute; /* Do not alter this line! */
+	visibility: hidden;
+	z-index: 90;
+}
+
+.mba-toolbar-menu-item {
+	background: transparent;
+	border: none;
+	color: #000000;
+	font: 11px Arial, Tahoma, Helvetica, sans, sans-serif;
+	margin: 0;
+	padding: 3px 15px 3px 30px;
+	position: relative; /* Do not alter this line! */
+}
+
+.mba-toolbar-menu-item-over {
+	background: #CCCC99;
+	border-color: #336600;
+	border-style: solid;
+	border-width: 1px 0 1px 0;
+	font-size: 11px;
+	margin: 0;
+	padding: 2px 15px 2px 30px;
+	position: relative; /* Do not alter this line! */
+	z-index: 110;
+}
+
+.mba-toolbar-menu-arrow, 
+.mba-toolbar-menu-arrow-over {
+	background: url(arrow_right.gif) no-repeat;
+	height: 7px;
+	position: absolute; /* Do not alter this line! */
+	right: 8px;
+	width: 4px;
+}
+
+

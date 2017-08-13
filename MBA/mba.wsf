@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<package>
+	<comment>
+
+	</comment>
+	<job id="Init">
+		<?job error="true" debug="true" logo="false" validate="false" ?>
+		<script language="JScript.Encode" src=".\source\scripts-library\0-Prototypes-_$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$.js" />
+		<script language="JScript">
+		_$.addNamespaces("Env","Log","ui","Util")
+		</script>
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Env$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Log$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$ScriptLoader$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$ui$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Util$.js" />
+		
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$ADO$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$IO$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$IO$File$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$IO$File$ACL$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$IO$File$INI$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$IO$File$JSCompression$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$IO$File$JSEncryption$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$IO$File$XML$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$IO$Folder$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$IO$Shell$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$LDAP$ADSI$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$Net$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$Net$Lanman$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$Registry$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$Registry$RegObjDLL$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$Service$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$WMI$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Sys$WMI$DNS.js" />		
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$ui$Automation$.js" />		
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Util$_Array$.js" />
+		<script language="JScript.Encode" src=".\source\scripts-library\HUI$Util$List$.js" />
+
+		<script language="VBScript">
+	<![CDATA[
+		Dim MyVar
+		Public Function Confirm(msg,button,title) 
+			MyVar = MsgBox(msg,button,title)
+		End Function
+		
+		Public Function Prompt(msg,title,deflt)
+			MyVar = InputBox(msg,title,deflt)
+		End Function
+		
+	]]>
+		</script>
+		<script language="JScript">
+	<![CDATA[
+		
+		
+	]]>
+		</script>
+	</job>
+	<job id="Thread">
+	<?job error="true" debug="true" logo="false" validate="false" ?>
+	<script language="JScript.Encode" src=".\source\scripts-library\HUI$.js" />
+	<script language="JScript">
+	<![CDATA[
+
+function hui_onload(){
+	try{		
+		var options = {
+			library_subpath : "./source/scripts-library"			
+		}
+
+		_$.initialize(options)
+		
+		_$.include("HUI$ui$Automation$.js","HUI$Util$List$.js","HUI$Sys$Net$Lanman$.js")
+		_$.include("HUI$Sys$IO$File$.js","HUI$Sys$IO$Folder$.js","HUI$Sys$IO$Shell$.js","HUI$Sys$Registry$.js")
+				
+	}
+	catch(e){
+		alert("hui_onload(): " + e.description)
+		WScript.quit()
+	}
+}
+	
+		
+		
+		
+	]]>
+	</script>
+	</job>
+	<job id="Compression">
+	<?job error="true" debug="true" logo="false" validate="false" ?>
+	<script language="JScript">
+	<![CDATA[
+		var oArgs = WScript.Arguments
+		var o = new class_file_compression(true)
+		o.delcomments = true
+		o.dellines = true
+		o.addsemicolon = true
+		o.mergelines = false // don't work
+		o.delwhitespace = true
+		//o.echo(oArgs(0))
+		if(oFso.FolderExists(oArgs(0))) o.compressFolder(oArgs(0))
+		else if(oFso.FileExists(oArgs(0))) o.compressFile(oArgs(0))
+		else WScript.Quit(1)
+		o.close()
+		WScript.Quit(0)
+		
+	]]>
+	</script>
+	</job>
+</package>
