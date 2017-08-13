@@ -1,5 +1,5 @@
 *.logs
-\.vscode
-\MBA\source\scripts-debug
-\MBA\build
-\MBA\logs
+/.vscode
+/MBA/source/scripts-debug
+/MBA/build
+/MBA/logs
